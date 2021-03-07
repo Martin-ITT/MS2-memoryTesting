@@ -3,9 +3,11 @@ let boardSize = 12; /* 4x3 game */
 */
 /* call functions on document ready - https://stackoverflow.com/questions/17567176/how-to-call-a-function-inside-document-ready/17567264 */
 $(document).ready(function(){
-    // we call the function
-    validate();
+    // call function to shuffle the cards
+    a = shuffle(a);
+    writeToDocument();
   });
+
 function getData(cb) {
     var xhr = new XMLHttpRequest(cb);
     xhr.open("GET", "cars.json", true);
@@ -31,9 +33,7 @@ function getData(cb) {
     }
     return array;
   }
-  a = shuffle(a);
 
-  console.log(a);
   function writeToDocument() {
     getData(function(data) {
         for (let i=1; i<7; i++) {
