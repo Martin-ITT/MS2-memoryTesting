@@ -6,7 +6,7 @@
   
   body {
     height: 100vh;
-    display: flex;
+    display: flex; /* with .memory-game margin:auto center the game container */
     background: #060AB2;
   }
   img {
@@ -16,9 +16,9 @@
     border:1px black solid;
    }
   .memory-game {
-    width: 640px;
+    width: 960px;
     height: 640px;
-    margin: auto;
+    margin: auto; /* with body display:flex center the game container */
     display: flex; /* changes items behaviour with default properties:
     flex-item {
       flex: 1; - each item takes same space
@@ -34,19 +34,19 @@
   }
   
   .memory-card {
-    width: calc(25% - 10px); /* */
+    width: calc(25% - 10px); /* substract 10 px to allow for 5px margin - overflow fix */
     height: calc(33.333% - 10px);
-    margin: 5px;
-    position: relative;
-    transform: scale(1);
+    margin: 5px; /* space between cards - causes overflow */
+    position: relative; /* effecting position absolute set in .front-face .back-face */
+    transform: scale(1); /* needst to be set to work with memory-card:active transform */
     transform-style: preserve-3d;
     transition: transform .5s;
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
   }
   
-  .memory-card:active {
-    transform: scale(0.97);
-    transition: transform .2s;
+  .memory-card:active { /* click effect */
+    transform: scale(0.97); /* shrinks the size to 97% */
+    transition: transform .2s; /* smoother shrink */
   }
   
   .memory-card.flip {
@@ -55,10 +55,10 @@
   
   .front-face,
   .back-face {
-    width: 100%;
+    width: 100%; /* takes the full available height of its container*/
     height: 100%;
     padding: 20px;
-    position: absolute;
+    position: absolute; /*will check what parent element it should be positioned to - postion relative has to be set*/
     border-radius: 5px;
     background: #1C7CCC;
     backface-visibility: hidden;
