@@ -30,7 +30,7 @@
     align-items: stretch; - stretched acros container height
     }*/
     flex-wrap: wrap; /* items can be displayed in multiple rows*/
-    perspective: 1000px;
+    perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
   }
   
   .memory-card {
@@ -39,8 +39,8 @@
     margin: 5px; /* space between cards - causes overflow */
     position: relative; /* effecting position absolute set in .front-face .back-face */
     transform: scale(1); /* needst to be set to work with memory-card:active transform */
-    transform-style: preserve-3d;
-    transition: transform .5s;
+    transform-style: preserve-3d; /* create 3D effect - together with .memory-card transition and perspective in .memory-game*/
+    transition: transform .5s; /* 3D* /
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
   }
   
@@ -61,9 +61,9 @@
     position: absolute; /*will check what parent element it should be positioned to - postion relative has to be set*/
     border-radius: 5px;
     background: #1C7CCC;
-    backface-visibility: hidden;
+    backface-visibility: hidden; /* mirored image of itself - hides inverted back-face*/
   }
   
   .front-face {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg); /* makes front-face visible */
   }

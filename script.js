@@ -1,5 +1,9 @@
 let boardSize = 6; /* 4x3 game -  */
 
+let hasFlippedCard = false; //logic for first click and second click
+let firstCard, secondCard;
+
+
 /* call functions on document ready - https://stackoverflow.com/questions/17567176/how-to-call-a-function-inside-document-ready/17567264 */
 $(document).ready(function(){
     // call function to shuffle the cards
@@ -80,15 +84,49 @@ function test() {
     console.log(this);
 }
 
-/* timeout to fix readyState problem 
+// timeout to fix readyState problem 
 setTimeout(function() {
 const cards = document.querySelectorAll('.memory-card');
 cards.forEach(card => card.addEventListener('click', flipCard));
 },500);
-*/
-
 
 function flipCard() {
-    console.log(this);
-    console.log("click");
+    this.classList.toggle('flip');
+    // first card has been clicked
+    if(!hasFlippedCard) {
+        hasFlippedCard = true;
+        firstCard = this;
+    } 
+    //second card click
+    else {
+        hasFlippedCard = false;
+        secondCard = this;
+    } 
+    checkForMatch();   
+}
+
+function checkForMatch() {
+    //do cards match?
+    setTimeout(() => { 
+        let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+        isMatch ? disableCards() : unflipCards();
+        /*
+        if (firstCard.dataset.framework === secondCard.dataset.framework) {
+            // cards match - remove event listeners click
+          disableCards();
+        }
+        else {
+            //not matching
+            unflipCards();
+        }*/
+    },1500);
+}
+
+function disableCards() {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+}
+function unflipCards() {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
 }
