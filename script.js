@@ -1,6 +1,7 @@
-let boardSize = 6; /* 4x3 game -  */
+let boardSize = 12; /* 4x3 game -  */
 
 let hasFlippedCard = false; //logic for first click and second click
+let lockBoard = false; // only two cards can be fliped at same time
 let firstCard, secondCard;
 
 
@@ -40,6 +41,7 @@ function getData(cb) {
   }
   /* function writing to document */
   function writeToDocument() {
+      console.log('write to document called');
     getData(function(data) {
         /*
         for (let i=1; i<boardSize; i++) {
@@ -86,28 +88,37 @@ function test() {
 
 // timeout to fix readyState problem 
 setTimeout(function() {
+console.log('click listener timeout on');
 const cards = document.querySelectorAll('.memory-card');
 cards.forEach(card => card.addEventListener('click', flipCard));
+console.log('click listener timeout off');
 },500);
 
 function flipCard() {
+    console.log('flipcard called');
+    if (lockBoard) return; // rest of the code won't be executed if lockboard true
     this.classList.toggle('flip');
     // first card has been clicked
     if(!hasFlippedCard) {
+        console.log('first card');
         hasFlippedCard = true;
         firstCard = this;
     } 
     //second card click
     else {
+        console.log('second card');
         hasFlippedCard = false;
         secondCard = this;
+        checkForMatch(); 
     } 
-    checkForMatch();   
+      return;
 }
 
 function checkForMatch() {
+    console.log('checking match');
     //do cards match?
-    setTimeout(() => { 
+    //setTimeout(() => { 
+        console.log('checking timeout on');
         let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
         isMatch ? disableCards() : unflipCards();
         /*
@@ -119,14 +130,25 @@ function checkForMatch() {
             //not matching
             unflipCards();
         }*/
-    },1500);
+    //},100);// do I need this timer?
+    console.log('checking timeout off');
 }
 
 function disableCards() {
+    console.log('disable cards called');
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 }
 function unflipCards() {
+    console.log('unflip caled');
+    lockBoard = true;
+    console.log('lockboard on');
+    setTimeout(() => { 
+    console.log('unflip timer on');
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
+    lockBoard = false;
+    console.log('lockboard off');
+    },2000);
+    console.log('unflip timer off');    
 }
