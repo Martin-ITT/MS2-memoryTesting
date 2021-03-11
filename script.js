@@ -160,3 +160,15 @@ function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
   }
+  
+  setTimeout(() => { 
+   // IIFE imediately invoked function
+  (function shuffleCards() {
+      console.log('shuffle called');
+      let cards = document.querySelectorAll('.memory-card');//is this legal - defining variable twice
+      cards.forEach(card => {
+          let randomPos = Math.floor(Math.random() * 100); // returns random number between 0-1 and, multiply to get num 0-11, floor makes it integer 
+          card.style.order =randomPos;
+      });
+  })();
+  },1000);
