@@ -1,4 +1,4 @@
-let boardSize = 12; /* 4x3 game -  */
+let boardSize = 6; /* 4x3 game -  */
 
 let hasFlippedCard = false; //logic for first click and second click
 let lockBoard = false; // only two cards can be fliped at same time
@@ -97,6 +97,7 @@ console.log('click listener timeout off');
 function flipCard() {
     console.log('flipcard called');
     if (lockBoard) return; // rest of the code won't be executed if lockboard true
+    if (this === firstCard) return; // prevent double click on first card
     this.classList.toggle('flip');
     // first card has been clicked
     if(!hasFlippedCard) {
@@ -138,6 +139,7 @@ function disableCards() {
     console.log('disable cards called');
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+    resetBoard();
 }
 function unflipCards() {
     console.log('unflip caled');
@@ -149,6 +151,12 @@ function unflipCards() {
     secondCard.classList.remove('flip');
     lockBoard = false;
     console.log('lockboard off');
+    resetBoard();
     },2000);
     console.log('unflip timer off');    
 }
+
+function resetBoard() {
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
+  }
