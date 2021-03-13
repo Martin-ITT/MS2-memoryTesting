@@ -7,10 +7,30 @@
 <link rel="stylesheet" href="styles.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
-<!-- game screen -->
-<section class="memory-game" id="game-board"> 
-</section>
-<script src="script.js"></script>  
+<body onload="myFunction()" style="margin:0;">
+   
+    <!-- https://www.w3schools.com/howto/howto_css_loader.asp -->
+    <div id="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+    </div>
+    <!-- game screen -->
+    <section class="memory-game" id="game-board"> 
+    </section>
+
+    <script src="script.js"></script> 
+
+    <script>
+        var myVar;
+        
+        function myFunction() {
+        myVar = setTimeout(showPage, 3000);
+        }
+        
+        function showPage() {
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("game-board").style.display = "flex";
+        }
+        </script>
 </body>
 </html>

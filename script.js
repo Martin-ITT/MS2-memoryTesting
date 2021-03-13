@@ -1,11 +1,31 @@
-let boardSize = 6; /* 4x3 game -  */
+let boardSize; /* game size */
+
+$('document').ready(function () {
+    // grab the query parameter from the url and pass it to game setup
+    mode = new URLSearchParams(window.location.search).get('mode');
+    //gameSetup(mode);
+    if (mode === "highScores") { // check if highscores has been selected first
+        displayHighScores(highScores);
+    } else if (mode === "Easy")
+     {  //if not highscores then call buildLayout
+        boardSize = 6;
+    }
+    else if (mode === "Medium") {
+        boardSize = 8;
+    }
+    else if (mode === "Hard") {
+        boardSize = 10;
+    }
+    cardURL = shuffle(cardURL);
+    writeToDocument();
+});
 
 let hasFlippedCard = false; //logic for first click and second click
 let lockBoard = false; // only two cards can be fliped at same time
 let firstCard, secondCard;
 
 
-/* call functions on document ready - https://stackoverflow.com/questions/17567176/how-to-call-a-function-inside-document-ready/17567264 */
+/* call functions on document ready - https://stackoverflow.com/questions/17567176/how-to-call-a-function-inside-document-ready/17567264 
 $(document).ready(function(){
     // call function to shuffle the cards
     cardURL = shuffle(cardURL);
@@ -172,3 +192,12 @@ function resetBoard() {
       });
   })();
   },1000);
+
+  function setGame(sizeIn) {
+      boardSize = sizeIn;
+      writeToDocument();
+  }
+  function clearDocument() {
+    document.getElementById("game-board").innerHTML = "";
+    writeToDocument();   
+}
