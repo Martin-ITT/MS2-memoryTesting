@@ -15,7 +15,7 @@
     height:120px;
     border:1px black solid;
    }
-  .memory-game {
+  .memory-game.easy{
     width: 960px;
     height: 640px;
     margin: auto; /* with body display:flex center the game container */
@@ -32,15 +32,69 @@
     flex-wrap: wrap; /* items can be displayed in multiple rows*/
     perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
   }
-  
-  .memory-card {
+  .memory-game.medium{
+    width: 70%;
+    height: 90%;
+    margin: auto; /* with body display:flex center the game container */
+    display: flex; /* changes items behaviour with default properties:
+    flex-item {
+      flex: 1; - each item takes same space
+    }
+    flex-container {
+    flex-direction: row; items layed in row
+    flex-wrap: nowrap; - layed out in one row only
+    justify-content: flex-start; - positioned left to right
+    align-items: stretch; - stretched acros container height
+    }*/
+    flex-wrap: wrap; /* items can be displayed in multiple rows*/
+    perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
+  }
+  .memory-game.hard{
+    width: 60%;
+    height: 90%;
+    margin: auto; /* with body display:flex center the game container */
+    display: flex; /* changes items behaviour with default properties:
+    flex-item {
+      flex: 1; - each item takes same space
+    }
+    flex-container {
+    flex-direction: row; items layed in row
+    flex-wrap: nowrap; - layed out in one row only
+    justify-content: flex-start; - positioned left to right
+    align-items: stretch; - stretched acros container height
+    }*/
+    flex-wrap: wrap; /* items can be displayed in multiple rows*/
+    perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
+  }
+
+  .memory-card.cardeasy {
     width: calc(25% - 10px); /* substract 10 px to allow for 5px margin - overflow fix */
     height: calc(33.333% - 10px);
     margin: 5px; /* space between cards - causes overflow */
     position: relative; /* effecting position absolute set in .front-face .back-face */
     transform: scale(1); /* needst to be set to work with memory-card:active transform */
     transform-style: preserve-3d; /* create 3D effect - together with .memory-card transition and perspective in .memory-game*/
-    transition: transform .5s; /* 3D* /
+    transition: transform .5s; /* 3D */
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  }
+  .memory-card.cardmedium {
+    width: calc(25% - 10px); /* substract 10 px to allow for 5px margin - overflow fix */
+    height: calc(22% - 10px);
+    margin: 5px; /* space between cards - causes overflow */
+    position: relative; /* effecting position absolute set in .front-face .back-face */
+    transform: scale(1); /* needst to be set to work with memory-card:active transform */
+    transform-style: preserve-3d; /* create 3D effect - together with .memory-card transition and perspective in .memory-game*/
+    transition: transform .5s; /* 3D */
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  }
+  .memory-card.cardhard {
+    width: calc(25% - 10px); /* substract 10 px to allow for 5px margin - overflow fix */
+    height: calc(20% - 10px);
+    margin: 5px; /* space between cards - causes overflow */
+    position: relative; /* effecting position absolute set in .front-face .back-face */
+    transform: scale(1); /* needst to be set to work with memory-card:active transform */
+    transform-style: preserve-3d; /* create 3D effect - together with .memory-card transition and perspective in .memory-game*/
+    transition: transform .5s; /* 3D */
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
   }
   

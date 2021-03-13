@@ -1,4 +1,5 @@
 let boardSize; /* game size */
+let boardSizeClass; /* CSS class  */
 
 $('document').ready(function () {
     // grab the query parameter from the url and pass it to game setup
@@ -9,12 +10,15 @@ $('document').ready(function () {
     } else if (mode === "Easy")
      {  //if not highscores then call buildLayout
         boardSize = 6;
+        boardSizeClass = "easy";
     }
     else if (mode === "Medium") {
         boardSize = 8;
+        boardSizeClass = "medium";
     }
     else if (mode === "Hard") {
         boardSize = 10;
+        boardSizeClass = "hard"
     }
     cardURL = shuffle(cardURL);
     writeToDocument();
@@ -22,7 +26,7 @@ $('document').ready(function () {
 
 let hasFlippedCard = false; //logic for first click and second click
 let lockBoard = false; // only two cards can be fliped at same time
-let firstCard, secondCard;
+let firstCard, secondCard; //variables to store and compare selected cards
 
 
 /* call functions on document ready - https://stackoverflow.com/questions/17567176/how-to-call-a-function-inside-document-ready/17567264 
@@ -63,6 +67,7 @@ function getData(cb) {
   function writeToDocument() {
       console.log('write to document called');
     getData(function(data) {
+        
         /*
         for (let i=1; i<boardSize; i++) {
         let x = cardURL[i];
@@ -79,9 +84,11 @@ function getData(cb) {
             const content = document.getElementById('game-board');
             firstDiv.setAttribute("class","memory-card");
             firstDiv.setAttribute("id","card"+i);
+            firstDiv.classList.add("card"+boardSizeClass);
             firstDiv.setAttribute("data-framework","card"+i);
             secondDiv.setAttribute("class","memory-card");
             secondDiv.setAttribute("id","card"+i);
+            secondDiv.classList.add("card"+boardSizeClass);
             secondDiv.setAttribute("data-framework","card"+i);
             content.appendChild(firstDiv).innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';;
             content.appendChild(secondDiv).innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';;
@@ -92,6 +99,8 @@ function getData(cb) {
 	            fakeImage.innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
 	        });*/
         }
+        const changeDiv = document.getElementById('game-board');
+        changeDiv.classList.add(boardSizeClass);
     });
 }
 
