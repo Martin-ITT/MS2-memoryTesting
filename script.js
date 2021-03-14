@@ -1,6 +1,6 @@
 let boardSize; /* game size */
 let boardSizeClass; /* CSS class  */
-let matchedPairs; /* stores each pair matched */
+let matchedPairs = 0; /* stores each pair matched */
 let cardUrl; /* array of image urls */
 let hasFlippedCard = false; //logic for first click and second click
 let lockBoard = false; // only two cards can be fliped at same time
@@ -189,8 +189,10 @@ function disableCards() {
     console.log('disable cards called');
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+    matchedPairs ++;
     // call function to clear/restore variables
     resetBoard();
+    checkGameWon ();
 }
 // flip cards back
 function unflipCards() {
@@ -224,4 +226,17 @@ function resetBoard() {
           card.style.order =randomPos;
       });
   })();
-  },500);
+},500);
+
+//check if all cards are flipped
+function checkGameWon(){
+    console.log('checkgamewon called');
+    console.log('matched pairs: ' +matchedPairs);
+    let gameWon = matchedPairs === boardSize;
+    gameWon ? gameComplete() :resetBoard();
+}
+// game was won toggle modal on
+function gameComplete() {
+    console.log('gamecomplete called');
+    $('#gameWonModal').modal('toggle');
+}
