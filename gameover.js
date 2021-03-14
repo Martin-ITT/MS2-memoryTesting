@@ -1,1 +1,1 @@
-$('#gameOverID').html('Number of flips: ' +sessionStorage.getItem("flips") +' Time left: ' +sessionStorage.getItem("time"));
+$('#gameOverID').html('Number of flips: ' +sessionStorage.getItem("flips") +'<br> Time left: ' +sessionStorage.getItem("time"));

@@ -9,6 +9,15 @@
     display: flex; /* with .memory-game margin:auto center the game container */
     background: rgb(221, 176, 50);
   }
+  #index-page {
+    margin: auto;
+    display: block;
+  }
+  #index-page button {
+    margin: 5px;
+    width: 200px;
+    height: 50px;
+  }
   img {
     background-color: #ffffff;
     width:150px;
@@ -206,9 +215,15 @@
     display: inline-block;
     width: 33%;
   }
-
-
-
+#gameOverDiv {
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+.gameOverItem {
+  align-self: center;
+}
 
 
 
