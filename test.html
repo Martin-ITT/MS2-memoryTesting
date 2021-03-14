@@ -30,7 +30,7 @@
                     <h2 id="flipsID">FLIPS: 0</h2>
                 </div>
                 <div class="col-md text-center">
-                    <button type="button" class="btn btn-danger" onclick="gameComplete()">EXIT GAME</button>
+                    <button type="button" class="btn btn-danger" onclick="gameLost()">EXIT GAME</button>
                 </div>
             </div>
            
@@ -149,7 +149,7 @@
             </div>
         </div>
     </div>
-
+    
     <script src="script.js"></script> 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -163,6 +163,11 @@
 
 
     <script>
+        //sessionStorage.setItem("name", "martin");
+        //sessionStorage.removeItem("name");
+        //sessionStorage.getItem("age");
+        //console.log(sessionStorage.key(0)); // will get key of index 0
+        //console.log(sessionStorage);
         var myVar;
         
         function myFunction() {

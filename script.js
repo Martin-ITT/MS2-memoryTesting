@@ -79,6 +79,10 @@ function getData(cb) {
   /* function creating game - document writer */
   function createGame() {
     console.log('create game called');
+    //sessionStorage.removeItem("flips");
+    //sessionStorage.removeItem("time");
+    sessionStorage.clear(); // clear sessionStorage for new game
+    console.log(sessionStorage);
     //call data function to retreive urls and create divs - cards
     getData(function(data) {
         /*
@@ -165,6 +169,8 @@ function flipCard() {
         hasFlippedCard = false; // first card has been already clicked as hasFlippedCard is true
         secondCard = this; // set second card variable
         numberOfFlips ++; // flip counter
+        sessionStorage.setItem("flips", numberOfFlips);// add number of flips to session storage
+        console.log('flips in session storage:' + sessionStorage.getItem("flips"));
         $('#flipsID').html('FLIPS: '+numberOfFlips);
         console.log("flips:" +numberOfFlips);
         checkForMatch(); // call compare cards function
@@ -252,15 +258,35 @@ function gameComplete() {
 
 function startTimer() {
     // timer https://www.youtube.com/watch?v=x7WJEmxNlEs
-    setInterval(updateTimer, 1000); //run time every second
-
-    startTime = 1;
+    // https://stackoverflow.com/questions/5978519/how-to-use-setinterval-and-clearinterval
+    var interval = setInterval(updateTimer, 1000); //run time every second and stop on out of time
+    
+    startTime = .5;
     time = startTime * 60;
+    
     function updateTimer() {
-        const minutes = Math.floor(time/60);
-        let seconds = time % 60;
+       // while (time != 1) {
+            const minutes = Math.floor(time/60);
+            let seconds = time % 60;
 
-        timeIdSelector.innerHTML = `${minutes} : ${seconds}`;
+            seconds = seconds < 10 ? '0' + seconds : seconds; //format time - if less than ten seconds add leading zero otherwise display normal
+
+            timeIdSelector.innerHTML = `TIME: ${minutes}: ${seconds}`;
+        if (time != 0) { // stops timer
         time --;
+        sessionStorage.setItem("time", time); // store time left in session storage
+        console.log(time);
+        }
+        if (time == 0 ) { // end game
+            clearInterval(interval);
+            gameLost();
+            return;
+        }
+      //  }
     }
+}
+function gameLost() {
+    console.log('gameLost called');
+    //$('#gameLostModal').modal('toggle');
+    window.open("gameOver.html","_self");
 }
