@@ -175,3 +175,11 @@
       transform: rotate(-360deg);
       -webkit-transform: rotate(-360deg);
     }
+  }
+  
+  #scorebar{
+    display: none;
+    width: 20%;
+    height: 90%;
+    margin: auto;
+  }

@@ -20,6 +20,11 @@
     <!-- game screen -->
     <section class="memory-game" id="game-board"> 
     </section>
+    <!-- Score bar -->
+    <aside id="scorebar">
+        <div id="time">time</div>
+        <div id="flips">flips</div>
+    </aside>
     
     <!-- New High score Modal -->
     <div class="modal fade" id="highScoreModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -150,6 +155,7 @@
         function showPage() {
         document.getElementById("spinner").style.display = "none";
         document.getElementById("game-board").style.display = "flex";
+        document.getElementById("scorebar").style.display = "block";
         }
         </script>
 </body>
