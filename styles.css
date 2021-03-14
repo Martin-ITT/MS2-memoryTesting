@@ -122,6 +122,15 @@
     transform: rotateY(180deg); /* makes front-face visible */
   }
   
+  /* apple stuff https://stackoverflow.com/questions/42744573/backface-visibility-not-working-in-safari */
+  #front #back {
+    color: white;
+    -webkit-perspective: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    visibility:visible;
+    backface-visibility: hidden;
+}
   #game-board {
     display: none;
   }
