@@ -17,15 +17,35 @@
         <div class="cube1"></div>
         <div class="cube2"></div>
     </div>
-    <!-- game screen -->
-    <section class="memory-game" id="game-board"> 
-    </section>
-    <!-- Score bar -->
-    <aside id="scorebar">
-        <div id="time">time</div>
-        <div id="flips">flips</div>
-    </aside>
     
+    <!-- Score bar -->
+  
+    <div id="scorebar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md text-center">
+                    <h2>TIME</h2>
+                    <p id="timeID">0</p>
+                </div>
+                <div class="col-md text-center">
+                    <h2>FLIPS</h2>
+                    <p id="flipsID">0</p>
+                </div>
+                <div class="col-md text-center">
+                    <h2>EXIT</h2>
+                    <p>end game</p>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+
+    <!-- game screen -->
+    
+    <div class="memory-game" id="game-board"> 
+    
+    </div>
     <!-- New High score Modal -->
     <div class="modal fade" id="highScoreModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -155,7 +175,7 @@
         function showPage() {
         document.getElementById("spinner").style.display = "none";
         document.getElementById("game-board").style.display = "flex";
-        document.getElementById("scorebar").style.display = "block";
+        document.getElementById("scorebar").style.display = "flex";
         }
         </script>
 </body>

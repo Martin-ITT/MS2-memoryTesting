@@ -5,6 +5,7 @@ let cardUrl; /* array of image urls */
 let hasFlippedCard = false; //logic for first click and second click
 let lockBoard = false; // only two cards can be fliped at same time
 let firstCard, secondCard; //variables to store and compare selected cards
+let numberOfFlips = 0; // flip counter
 
 
 
@@ -158,6 +159,9 @@ function flipCard() {
         console.log('second card');
         hasFlippedCard = false; // first card has been already clicked as hasFlippedCard is true
         secondCard = this; // set second card variable
+        numberOfFlips ++; // flip counter
+        $('#flipsID').html(numberOfFlips);
+        console.log("flips:" +numberOfFlips);
         checkForMatch(); // call compare cards function
     } 
       return; //exit current function
@@ -189,7 +193,7 @@ function disableCards() {
     console.log('disable cards called');
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-    matchedPairs ++;
+    matchedPairs ++; //matched pairs counter
     // call function to clear/restore variables
     resetBoard();
     checkGameWon ();
