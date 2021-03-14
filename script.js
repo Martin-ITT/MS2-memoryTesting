@@ -79,9 +79,9 @@ function getData(cb) {
   /* function creating game - document writer */
   function createGame() {
     console.log('create game called');
-    //sessionStorage.removeItem("flips");
-    //sessionStorage.removeItem("time");
-    sessionStorage.clear(); // clear sessionStorage for new game
+    sessionStorage.setItem("flips", 0);
+    sessionStorage.setItem("time", "no time limit");
+    //sessionStorage.clear(); // clear sessionStorage for new game
     console.log(sessionStorage);
     //call data function to retreive urls and create divs - cards
     getData(function(data) {
@@ -261,7 +261,7 @@ function startTimer() {
     // https://stackoverflow.com/questions/5978519/how-to-use-setinterval-and-clearinterval
     var interval = setInterval(updateTimer, 1000); //run time every second and stop on out of time
     
-    startTime = .5;
+    startTime = 1;
     time = startTime * 60;
     
     function updateTimer() {
@@ -270,8 +270,7 @@ function startTimer() {
             let seconds = time % 60;
 
             seconds = seconds < 10 ? '0' + seconds : seconds; //format time - if less than ten seconds add leading zero otherwise display normal
-
-            timeIdSelector.innerHTML = `TIME: ${minutes}: ${seconds}`;
+            timeIdSelector.innerHTML = `TIME: 0${minutes}:${seconds}`;
         if (time != 0) { // stops timer
         time --;
         sessionStorage.setItem("time", time); // store time left in session storage

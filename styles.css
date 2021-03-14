@@ -115,7 +115,7 @@
     position: absolute; /*will check what parent element it should be positioned to - postion relative has to be set*/
     border-radius: 5px;
     background: #1C7CCC;
-    backface-visibility: hidden; /* mirored image of itself - hides inverted back-face*/
+    -webkit-backface-visibility: hidden; /* mirored image of itself - hides inverted back-face*/
   }
   
   .front-face {
