@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+
+<title>Memory Game</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
-    <div class="container">
-        <button type="button" class="btn menu-button new-game" onclick="window.location.href='index.html?mode=Easy';">Easy - 12</button>
-        <button type="button" class="btn menu-button new-game" onclick="window.location.href='index.html?mode=Medium';">Medium - 16</button>
-        <button type="button" class="btn menu-button new-game" onclick="window.location.href='index.html?mode=Hard';">Hard - 20</button>
+<body onload="myFunction()" style="margin:0;">
+   
+    <!-- https://www.w3schools.com/howto/howto_css_loader.asp -->
+    <div id="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
     </div>
+    <!-- game screen -->
+    <section class="memory-game" id="game-board"> 
+    </section>
+
+    <script src="script.js"></script> 
+
+    <script>
+        var myVar;
+        
+        function myFunction() {
+        myVar = setTimeout(showPage, 3000);
+        }
+        
+        function showPage() {
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("game-board").style.display = "flex";
+        }
+        </script>
 </body>
 </html>
