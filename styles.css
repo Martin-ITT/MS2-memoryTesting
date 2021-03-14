@@ -33,8 +33,8 @@
     perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
   }
   .memory-game.medium{
-    width: 70%;
-    height: 90%;
+    width: 60%;
+    height: 80%;
     margin: auto; /* with body display:flex center the game container */
     display: flex; /* changes items behaviour with default properties:
     flex-item {
@@ -50,8 +50,8 @@
     perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
   }
   .memory-game.hard{
-    width: 60%;
-    height: 90%;
+    width: 80%;
+    height: 75%;
     margin: auto; /* with body display:flex center the game container */
     display: flex; /* changes items behaviour with default properties:
     flex-item {
@@ -79,7 +79,7 @@
   }
   .memory-card.cardmedium {
     width: calc(25% - 10px); /* substract 10 px to allow for 5px margin - overflow fix */
-    height: calc(22% - 10px);
+    height: calc(25% - 10px);
     margin: 5px; /* space between cards - causes overflow */
     position: relative; /* effecting position absolute set in .front-face .back-face */
     transform: scale(1); /* needst to be set to work with memory-card:active transform */
@@ -88,8 +88,8 @@
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
   }
   .memory-card.cardhard {
-    width: calc(25% - 10px); /* substract 10 px to allow for 5px margin - overflow fix */
-    height: calc(20% - 10px);
+    width: calc(20% - 10px); /* substract 10 px to allow for 5px margin - overflow fix */
+    height: calc(25% - 10px);
     margin: 5px; /* space between cards - causes overflow */
     position: relative; /* effecting position absolute set in .front-face .back-face */
     transform: scale(1); /* needst to be set to work with memory-card:active transform */
@@ -178,12 +178,14 @@
   }
   
   #scorebar{
+    border: 2px solid #000000;
+    border-radius: 2px;
+
     position: absolute;
     top: 5;
     padding-top: 20px;
     display: none;
     width: 100%;
     height: 10%;
-    margin: auto;
   }
  

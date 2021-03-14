@@ -6,7 +6,11 @@ let hasFlippedCard = false; //logic for first click and second click
 let lockBoard = false; // only two cards can be fliped at same time
 let firstCard, secondCard; //variables to store and compare selected cards
 let numberOfFlips = 0; // flip counter
-
+let startTime; // time limit variable in minutes
+let time; // time limit stored in seconds
+const timeIdSelector = document.getElementById('timeID');
+let timerOn = false; // timer not running
+//const cards = document.querySelectorAll('.memory-card'); has to be inside timeout function
 
 
 // When document ready
@@ -74,10 +78,9 @@ function getData(cb) {
   }
   /* function creating game - document writer */
   function createGame() {
-      console.log('create game called');
-      //call data function to retreive urls and create divs - cards
+    console.log('create game called');
+    //call data function to retreive urls and create divs - cards
     getData(function(data) {
-        
         /*
         for (let i=1; i<boardSize; i++) {
         let x = cardURL[i];
@@ -111,13 +114,13 @@ function getData(cb) {
             //document.querySelectorAll(".card"+i)
             //.innerHTML += '<div class="memory-card" id="card'+i +'" data-framework="card'+i+'"><img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
             /*const fakeImages = document.querySelectorAll(".memory-card");
-	        fakeImages.forEach(fakeImage => {
-	            fakeImage.innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
-	        });*/
+            fakeImages.forEach(fakeImage => {
+                fakeImage.innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
+            });*/
         }
-        // add class to identify game size for css
-        const changeDiv = document.getElementById('game-board');
-        changeDiv.classList.add(boardSizeClass);
+    // add class to identify game size for css
+    const changeDiv = document.getElementById('game-board');
+    changeDiv.classList.add(boardSizeClass);
     });
 }
 
@@ -145,6 +148,8 @@ console.log('click listener timeout off');
 //flip card on click function
 function flipCard() {
     console.log('flipcard called');
+    if (boardSize === 10 && !timerOn) startTimer();
+    timerOn = true;
     if (lockBoard) return; // rest of the code won't be executed if lockboard true. return = exit function
     if (this === firstCard) return; // prevent double click on first card
     this.classList.toggle('flip'); // toggle flip class on selected card
@@ -160,7 +165,7 @@ function flipCard() {
         hasFlippedCard = false; // first card has been already clicked as hasFlippedCard is true
         secondCard = this; // set second card variable
         numberOfFlips ++; // flip counter
-        $('#flipsID').html(numberOfFlips);
+        $('#flipsID').html('FLIPS: '+numberOfFlips);
         console.log("flips:" +numberOfFlips);
         checkForMatch(); // call compare cards function
     } 
@@ -243,4 +248,19 @@ function checkGameWon(){
 function gameComplete() {
     console.log('gamecomplete called');
     $('#gameWonModal').modal('toggle');
+}
+
+function startTimer() {
+    // timer https://www.youtube.com/watch?v=x7WJEmxNlEs
+    setInterval(updateTimer, 1000); //run time every second
+
+    startTime = 1;
+    time = startTime * 60;
+    function updateTimer() {
+        const minutes = Math.floor(time/60);
+        let seconds = time % 60;
+
+        timeIdSelector.innerHTML = `${minutes} : ${seconds}`;
+        time --;
+    }
 }
