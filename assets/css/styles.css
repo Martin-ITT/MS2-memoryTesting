@@ -1,0 +1,251 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: flex; /* with .memory-game margin:auto center the game container */
+  background: rgb(221, 176, 50);
+}
+#index-page {
+  margin: auto;
+  display: block;
+}
+#index-page button {
+  margin: 5px;
+  width: 200px;
+  height: 50px;
+}
+img {
+  background-color: #ffffff;
+  width:150px;
+  height:120px;
+  border:1px black solid;
+ }
+.memory-game.easy{
+  margin: auto;
+  padding-top: 20px;
+  width: 95%;
+  height: 80%;
+  /* with body display:flex center the game container */
+  display: flex; /* changes items behaviour with default properties:
+  flex-item {
+    flex: 1; - each item takes same space
+  }
+  flex-container {
+  flex-direction: row; items layed in row
+  flex-wrap: nowrap; - layed out in one row only
+  justify-content: flex-start; - positioned left to right
+  align-items: stretch; - stretched acros container height
+  }*/
+  flex-wrap: wrap; /* items can be displayed in multiple rows*/
+  perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
+}
+.memory-game.medium{
+  padding-top: 40px;
+  width: 95%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+.memory-game.hard{
+  padding-top: 70px;
+  width: 95%;
+  height: 85%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+.memory-card.cardeasy {
+  width: calc(33.333% - 4px); /* substract 10 px to allow for 5px margin - overflow fix */
+  height: calc(25% - 4px);
+  margin: 2px; /* space between cards - causes overflow */
+  position: relative; /* effecting position absolute set in .front-face .back-face */
+  transform: scale(1); /* needst to be set to work with memory-card:active transform */
+  transform-style: preserve-3d; /* create 3D effect - together with .memory-card transition and perspective in .memory-game*/
+  transition: transform .5s; /* 3D */
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+.memory-card.cardmedium {
+  width: calc(25% - 5px);
+  height: calc(25% - 5px);
+  margin: 2px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+.memory-card.cardhard {
+  width: calc(25% - 10px);
+  height: calc(20% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+.memory-card:active { /* click effect */
+  transform: scale(0.97); /* shrinks the size to 97% */
+  transition: transform .2s; /* smoother shrink */
+}
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+.front-face,
+.back-face {
+  width: 100%; /* takes the full available height of its container*/
+  height: 100%;
+  padding: 5px;
+  position: absolute; /*will check what parent element it should be positioned to - postion relative has to be set*/
+  border-radius: 5px;
+  background: #1C7CCC;
+  -webkit-backface-visibility: hidden; /* mirored image of itself - hides inverted back-face*/
+  backface-visibility: hidden;
+}
+.front-face {
+  transform: rotateY(180deg); /* makes front-face visible */
+}
+#game-board {
+  display: none;
+}
+/* loader https://tobiasahlin.com/spinkit/ */
+#spinner {
+  color: #ffffff;
+  margin: 60% 35%;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+#spinner-text {
+  position: absolute;
+  top: 200px;
+  left: 30px;
+}
+.cube1, .cube2 {
+  background-color: #fff;
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+  animation: sk-cubemove 1.8s infinite ease-in-out;
+}
+.cube2 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+@-webkit-keyframes sk-cubemove {
+  25% { -webkit-transform: translateX(82px) rotate(-90deg) scale(0.5) }
+  50% { -webkit-transform: translateX(82px) translateY(82px) rotate(-180deg) }
+  75% { -webkit-transform: translateX(0px) translateY(82px) rotate(-270deg) scale(0.5) }
+  100% { -webkit-transform: rotate(-360deg) }
+}
+@keyframes sk-cubemove {
+  25% { 
+    transform: translateX(82px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(82px) rotate(-90deg) scale(0.5);
+  } 50% { 
+    transform: translateX(82px) translateY(82px) rotate(-179deg);
+    -webkit-transform: translateX(82px) translateY(82px) rotate(-179deg);
+  } 50.1% { 
+    transform: translateX(82px) translateY(82px) rotate(-180deg);
+    -webkit-transform: translateX(82px) translateY(82px) rotate(-180deg);
+  } 75% { 
+    transform: translateX(0px) translateY(82px) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(82px) rotate(-270deg) scale(0.5);
+  } 100% { 
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+  }
+}
+#scorebar {
+  padding-top: 10px;
+  position: absolute;
+  border: 2px solid #000000;
+  border-radius: 2px;
+  display: none;
+  width: 100%;
+  height: 10%;
+  text-align: center;
+}
+#scorebar h2 {
+  font-size: 15px;
+}
+.score-item {
+  align-self: center;
+  display: inline-block;
+  width: 33%;
+}
+#gameOverDiv {
+  text-align: center;
+  width: 100%;
+  display: block;
+margin: auto;
+}
+.gameOverItem {
+  align-self: center;
+}
+/* responsive */
+@media(min-width: 770px) {
+  .memory-game.easy {
+    padding-top: 60px;
+    width: 90%;
+  }
+  .memory-game.medium {
+    padding-top: 100px;
+  }
+  .memory-game.hard{
+    margin: auto; 
+  }
+  .memory-card.cardeasy {
+    width: calc(25% - 10px); /* substract 10 px to allow for 5px margin - overflow fix */
+    height: calc(33.333% - 10px);
+    margin: 5px; 
+  }
+  .memory-card.cardmedium {
+    margin: 2px; 
+  }
+  .memory-card.cardhard {
+    margin: 5px; 
+  }
+  .front-face,
+  .back-face {
+    padding: 20px;
+  }
+  /* loader https://tobiasahlin.com/spinkit/ */
+  #spinner {
+    margin: 45% 45%;
+  }
+  .cube1, .cube2 {
+    background-color: #fff;
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  #scorebar h2 {
+    font-size: 35px;
+  }
+}
+@media(min-width: 1500px) {
+  .memory-game.easy {
+    width: 70%;
+  }
+  .memory-game.medium {
+    width: 70%;
+  }
+  .memory-game.hard{
+    width: 70%; 
+  }
+  #spinner {
+    margin: 30% 45%;
+  }
+}
