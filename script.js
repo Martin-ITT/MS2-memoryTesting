@@ -241,7 +241,7 @@ function resetBoard() {
           card.style.order =randomPos;
       });
   })();
-},500);
+},1000);
 
 //check if all cards are flipped
 function checkGameWon(){
