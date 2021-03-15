@@ -29,19 +29,87 @@
             </ul>
         </div>
     </nav>
-
-    <div id="index-page">
-        <div>
-        <button type="button" class="btn btn-secondary" onclick="window.location.href='game.html?mode=Easy';">Easy - 12</button>
+    <div class="hero-image">
+        <div class="hero-text">
+            <div id="data">
+            </div>
+            <h1>The Car Club</h1>
+            <p>Where the fun begins</p>
+            <!-- MODALS from https://getbootstrap.com/ -->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#menuModal">Let's begin</button>
         </div>
-        <div>
-        <button type="button" class="btn btn-secondary" onclick="window.location.href='game.html?mode=Medium';">Medium - 16</button>
+        <!-- Menu Modal -->
+        <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true"> <!-- removed role="dialog" -->
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content"> <!-- add class mainMenu-->
+                    <div class="modal-header">
+                        <h5 class="modal-title m-auto">Menu</h5>
+                    </div>
+                    <div class="modal-body m-auto">
+                        <div class="row">
+                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#newGameModal" data-dismiss="modal">New game</button>                           
+                          </div>
+                          <div class="row">
+                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#howToModal" data-dismiss="modal">How to play</button>                           
+                          </div><div class="row">
+                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#topScoreModal">Top Score</button>                           
+                          </div>
+                    </div>      
+                </div>
+            </div>
         </div>
-        <div>
-        <button type="button" class="btn btn-secondary" onclick="window.location.href='game.html?mode=Hard';">Hard - 20</button>
+         <!-- New Game Modal -->
+         <div class="modal fade" id="newGameModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <h4 class="modal-title m-auto">New Game</h4>
+                    </div>
+                    <div class="modal-body m-auto">
+                        <div class="row">
+                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#trainingModal" data-dismiss="modal" onclick="window.location.href='game.html?mode=Easy';">Training</button>                           
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#mediumModal" data-dismiss="modal" onclick="window.location.href='game.html?mode=Medium';">Medium</button>                           
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#hardModal" data-dismiss="modal" onclick="window.location.href='game.html?mode=Hard';">Hard</button>                           
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn exit-button button-click" data-toggle="modal"
+                            data-target="#menuModal" data-dismiss="modal">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- How to play Modal -->
+        <div class="modal fade" id="howToModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"> 
+                        <h4 class="modal-title m-auto">Instructions</h4>
+                    </div>
+                    <div class="modal-body">
+                                <p>Select game difficulty.</p>
+                                <p>Training - 20 cards, no limits.</p>
+                                <p>Medium - 16 cards, 1 minute limit.</p>
+                                <p>Hard - 24 cards 1 minute limit, 24 flips limit.</p>
+                            
+                                <p>The aim is to collect all pairs of cards as soon as possible using minimum flips. On each turn, you'll flip two cards over.
+                                    If cards doesn't match they will flip back and you might have another try if you didn't run out of flips depending on game settings.
+                                    If cards match they will stay facing up.</p> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn exit-button button-click" data-toggle="modal"
+                            data-target="#menuModal" data-dismiss="modal">Back</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
+
     <!-- FOOTER from BS4-->
     <footer>
         <div class="page-footer text-center">
