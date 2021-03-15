@@ -250,10 +250,13 @@ function checkGameWon(){
     let gameWon = matchedPairs === boardSize;
     gameWon ? gameComplete() :resetBoard();
 }
-// game was won toggle modal on
+// game was won
 function gameComplete() {
     console.log('gamecomplete called');
-    $('#gameWonModal').modal('toggle');
+    //$('#gameWonModal').modal('toggle');
+    setTimeout(() => {
+    window.open("gameWon.html","_self");
+    },1000);// 1 sec delay after game won
 }
 
 function startTimer() {
