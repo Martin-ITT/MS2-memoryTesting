@@ -4,9 +4,26 @@
   box-sizing: border-box;
 }
 body {
+  color:#ffffff;
   height: 100vh;
   display: flex; /* with .memory-game margin:auto center the game container */
   background: rgb(221, 176, 50);
+}
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/www.pexels.com--photo--photo-of-car-on-expressway-3422964.jpg");
+  min-height: 84vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.hero-image-game{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/www.pexels.com--photo--photo-of-five-cars-parked-1280560.jpg");
+  min-height: 84vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 #index-page {
   margin: auto;

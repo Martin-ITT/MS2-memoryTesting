@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta name="author" content="Martin Pavlin">
+    <meta name="keywords" content="carlogos, memory game, game">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Memory Game</title>
+</head>
+<body>
+    <!-- NAVBAR from https://getbootstrap.com/ -->
+     <nav class="navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand" href="index.html"><img src="./assets/img/NicePng.png" alt="CarClub logo">Car Club</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mr-lg-3">
+                <li class="nav-item mr-lg-2">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>         
+                <li class="nav-item active mr-lg-2">
+                    <a class="nav-link" href="contact.html">Contact us<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero-image">
+        <section class="pb-3" id="contact">
+            <div id="contact-address">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 text-center text-md-right">
+                            <h4>address</h4>
+                            <h6>The Car Club<br>1 St Stephen's Green, Dublin 2, D02 FY84</h6>
+                            <h4>telephone</h4>
+                            <h6>(+353) 01- 454 4544</h6>
+                            <h4>email</h4>
+                            <h6>info@thecarclub.ie</h6>
+                        </div>
+                        <div id="contact-map" class="col-md-8 text-center">
+                            <div id="map">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="contact-form">
+                <div class="container">
+                    <form name="contact-form" onsubmit="formSubmitAlert()" method="post" action="https://formdump.codeinstitute.net/">
+                        <div class="container text-center text-white">
+                            <h2>Contact us</h2>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Please enter your name here" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Please enter your email here" required>
+                            <small id="emailHelp" class="form-text">We'll never share your email address.</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-control" name="message" placeholder="You can type your message here" required></textarea>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-center mb-3">
+                                    <button type="submit" class="btn btn-light border border-dark">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>   
+    </div>
+      <!-- FOOTER from -->
+      <footer>
+        <div class="page-footer text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 pt-3 pl-5">
+                        <a class="navbar-brand " href="https://github.com/Martin-ITT" target="blank"><img src="./assets/img/www.iconfinder.com--icons--298822--download--png--512.png" alt="Facebook"></a>
+                    </div>
+                    <div class="col-8">
+                        <div class="footer-copyright pt-4">
+                            <p>© 2021 The Car Club</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
