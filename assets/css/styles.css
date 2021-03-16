@@ -230,7 +230,9 @@ margin: auto;
     margin: 2px; 
   }
   .memory-card.cardhard {
-    margin: 5px; 
+    width: calc(20% - 10px);
+    height: calc(25% - 10px);
+    margin: 5px;
   }
   .front-face,
   .back-face {

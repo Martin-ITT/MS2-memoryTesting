@@ -152,7 +152,7 @@ console.log('click listener timeout off');
 //flip card on click function
 function flipCard() {
     console.log('flipcard called');
-    if (boardSize === 10 && !timerOn) startTimer();
+    if (boardSize >= 8  && !timerOn) startTimer(); // activate timer
     timerOn = true;
     if (lockBoard) return; // rest of the code won't be executed if lockboard true. return = exit function
     if (this === firstCard) return; // prevent double click on first card
@@ -174,6 +174,7 @@ function flipCard() {
         $('#flipsID').html('FLIPS: '+numberOfFlips);
         console.log("flips:" +numberOfFlips);
         checkForMatch(); // call compare cards function
+        if (numberOfFlips === 25 && boardSize === 10) $('#gameLostModal').modal('toggle'); setTimeout(() => { gameLost()},5000); //game lost if more than 25 flips
     } 
       return; //exit current function
 }
@@ -264,7 +265,7 @@ function startTimer() {
     // https://stackoverflow.com/questions/5978519/how-to-use-setinterval-and-clearinterval
     var interval = setInterval(updateTimer, 1000); //run time every second and stop on out of time
     
-    startTime = 1;
+    startTime = 2;
     time = startTime * 60;
     
     function updateTimer() {

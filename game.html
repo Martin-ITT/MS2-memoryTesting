@@ -22,21 +22,41 @@
     </div>
     
     <!-- Score bar -->
-        <div id="scorebar">
-            <div class="score-item">
-                <h2 id="timeID">TIME: 00:00</h2>
-            </div>
-            <div class="score-item">
-                <h2 id="flipsID">FLIPS: 0</h2>
-            </div>
-            <div class="score-item">
-                <button type="button" class="btn btn-danger mb-2" onclick="gameLost()">QUIT GAME</button>
-            </div>
+    <div id="scorebar">
+        <div class="score-item">
+            <h2 id="timeID">TIME: 00:00</h2>
         </div>
+        <div class="score-item">
+            <h2 id="flipsID">FLIPS: 0</h2>
+        </div>
+        <div class="score-item">
+            <button type="button" class="btn btn-danger mb-2" onclick="gameLost()">QUIT GAME</button>
+        </div>
+    </div>
 
     <!-- game screen -->
-        <div class="memory-game" id="game-board"> 
+    <div class="memory-game" id="game-board"> 
+    </div>
+
+    <div class="modal fade" id="#gameLostModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header"> 
+                    <h4 class="modal-title m-auto">Game over</h4>
+                </div>
+                <div class="modal-body m-auto">
+                    <div class="row">
+                    Out of time
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn exit-button button-click" data-toggle="modal"
+                        data-target="#menuModal" data-dismiss="modal">Back</button>
+                </div>
+            </div>
         </div>
+    </div>
+
 
     <script src="./assets/js/script.js"></script> 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -67,6 +87,6 @@
         document.getElementById("game-board").style.display = "flex";
         document.getElementById("scorebar").style.display = "flex";
         }
-        </script>
+    </script>
 </body>
 </html>
