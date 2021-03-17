@@ -28,11 +28,13 @@ $('document').ready(function () {
         //create 8 pairs game
         boardSize = 8;
         boardSizeClass = "medium";
+        startTime = 1;
     }
     else if (mode === "Hard") {
         //create 10 pairs game
         boardSize = 10;
         boardSizeClass = "hard"
+        startTime = 1;
     }
     // get random logos 
     cardURL = getRandomImages(cardURL);
@@ -174,7 +176,10 @@ function flipCard() {
         $('#flipsID').html('FLIPS: '+numberOfFlips);
         console.log("flips:" +numberOfFlips);
         checkForMatch(); // call compare cards function
-        if (numberOfFlips === 25 && boardSize === 10) $('#gameLostModal').modal('toggle'); setTimeout(() => { gameLost()},5000); //game lost if more than 25 flips
+        if (numberOfFlips === 21 && boardSize === 10) {
+            //$('#gameLostModal').modal('toggle');
+            setTimeout(() => { gameLost()},3000); //game lost if more than 25 flips
+        }
     } 
       return; //exit current function
 }
@@ -265,7 +270,6 @@ function startTimer() {
     // https://stackoverflow.com/questions/5978519/how-to-use-setinterval-and-clearinterval
     var interval = setInterval(updateTimer, 1000); //run time every second and stop on out of time
     
-    startTime = 2;
     time = startTime * 60;
     
     function updateTimer() {
@@ -282,7 +286,8 @@ function startTimer() {
         }
         if (time == 0 ) { // end game
             clearInterval(interval);
-            gameLost();
+            //$('#gameLostModal').modal('toggle');
+            setTimeout(() => { gameLost()},3000);
             return;
         }
       //  }

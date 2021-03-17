@@ -38,21 +38,16 @@
     <div class="memory-game" id="game-board"> 
     </div>
 
-    <div class="modal fade" id="#gameLostModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="#gameLostModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true"> <!-- removed role="dialog" -->
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header"> 
-                    <h4 class="modal-title m-auto">Game over</h4>
+            <div class="modal-content"> <!-- add class mainMenu-->
+                <div class="modal-header">
+                    <h5 class="modal-title m-auto">Menu</h5>
                 </div>
                 <div class="modal-body m-auto">
-                    <div class="row">
-                    Out of time
+                    <div class="row">       
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn exit-button button-click" data-toggle="modal"
-                        data-target="#menuModal" data-dismiss="modal">Back</button>
-                </div>
+                </div>      
             </div>
         </div>
     </div>
