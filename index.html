@@ -7,10 +7,12 @@
     <meta name="author" content="Martin Pavlin">
     <meta name="keywords" content="carlogos, memory game, game">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!--
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Memory Game</title>
+    -->
+    <title>The Car club</title>
 </head>
 <body>
      <!-- NAVBAR from https://getbootstrap.com/ -->
@@ -62,7 +64,7 @@
                 </div>
             </div>
         </div>
-         <!-- New Game Modal -->
+         <!-- New Game Modal 
          <div class="modal fade" id="newGameModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -86,7 +88,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- How to play Modal -->
         <div class="modal fade" id="howToModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -96,16 +98,16 @@
                     </div>
                     <div class="modal-body">
                                 <p>Select game difficulty.</p>
-                                <p>Training - 20 cards, no limits.</p>
+                                <p>Easy - 12 cards, no limits.</p>
                                 <p>Medium - 16 cards, 1 minute limit.</p>
-                                <p>Hard - 24 cards 1 minute limit, 21 flips limit.</p>
+                                <p>Hard - 24 cards 1 minute limit, 20 flips limit.</p>
                             
                                 <p>The aim is to collect all pairs of cards as soon as possible using minimum flips. On each turn, you'll flip two cards over.
                                     If cards doesn't match they will flip back and you might have another try if you didn't run out of flips depending on game settings.
                                     If cards match they will stay facing up.</p> 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn exit-button button-click" data-toggle="modal"
+                        <button type="button" class="btn exit-button button-click btn-primary" data-toggle="modal"
                             data-target="#menuModal" data-dismiss="modal">Back</button>
                     </div>
                 </div>
@@ -130,7 +132,6 @@
             </div>
         </div>
     </footer>
-    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>

@@ -155,6 +155,12 @@ console.log('click listener timeout off');
 function flipCard() {
     console.log('flipcard called');
     if (boardSize >= 8  && !timerOn) startTimer(); // activate timer
+    if (numberOfFlips === 20 && boardSize === 10) { //game lost if more than 20 flips
+        //$('#gameLostModal').modal('toggle');
+        console.log('reason flips')
+        sessionStorage.setItem("reasonLost", "flips"); //pass game lost over flips
+        gameLost(); 
+    }
     timerOn = true;
     if (lockBoard) return; // rest of the code won't be executed if lockboard true. return = exit function
     if (this === firstCard) return; // prevent double click on first card
@@ -176,10 +182,6 @@ function flipCard() {
         $('#flipsID').html('FLIPS: '+numberOfFlips);
         console.log("flips:" +numberOfFlips);
         checkForMatch(); // call compare cards function
-        if (numberOfFlips === 21 && boardSize === 10) {
-            //$('#gameLostModal').modal('toggle');
-            setTimeout(() => { gameLost()},3000); //game lost if more than 25 flips
-        }
     } 
       return; //exit current function
 }
@@ -287,6 +289,8 @@ function startTimer() {
         if (time == 0 ) { // end game
             clearInterval(interval);
             //$('#gameLostModal').modal('toggle');
+            console.log('reason time')
+            sessionStorage.setItem("reasonLost", "time"); // game lost over time
             setTimeout(() => { gameLost()},3000);
             return;
         }
