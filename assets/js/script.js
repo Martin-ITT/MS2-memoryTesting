@@ -81,8 +81,9 @@ function getData(cb) {
   /* function creating game - document writer */
   function createGame() {
     console.log('create game called');
-    sessionStorage.setItem("flips", 0);
+    sessionStorage.setItem("flips", 0); //clear session storage
     sessionStorage.setItem("time", "no time limit");
+    sessionStorage.setItem("reasonGameOver", 0);
     //sessionStorage.clear(); // clear sessionStorage for new game
     console.log(sessionStorage);
     //call data function to retreive urls and create divs - cards
@@ -158,7 +159,7 @@ function flipCard() {
     if (numberOfFlips === 20 && boardSize === 10) { //game lost if more than 20 flips
         //$('#gameLostModal').modal('toggle');
         console.log('reason flips')
-        sessionStorage.setItem("reasonLost", "flips"); //pass game lost over flips
+        sessionStorage.setItem("reasonGameOver", "flips"); //pass game lost over flips
         gameLost(); 
     }
     timerOn = true;
@@ -261,6 +262,7 @@ function checkGameWon(){
 // game was won
 function gameComplete() {
     console.log('gamecomplete called');
+    sessionStorage.setItem("reasonGameOver", "won");
     //$('#gameWonModal').modal('toggle');
     setTimeout(() => {
     window.open("gameWon.html","_self");
@@ -290,8 +292,8 @@ function startTimer() {
             clearInterval(interval);
             //$('#gameLostModal').modal('toggle');
             console.log('reason time')
-            sessionStorage.setItem("reasonLost", "time"); // game lost over time
-            setTimeout(() => { gameLost()},3000);
+            sessionStorage.setItem("reasonGameOver", "time"); // game lost over time
+            gameLost();
             return;
         }
       //  }
