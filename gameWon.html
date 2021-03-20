@@ -12,15 +12,28 @@
     <!--
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     -->
-    <title>The Car Club</title>
+    <title>Game won</title>
 </head>
 <body class="hero-image">
     <div id="gameOverDiv"> <!-- to be changed-->
         <h2 class="gameOverItem">Game Won</h2> <!-- to be changed-->
         <p class="gameOverItem" id="gameWonID">Test</p> <!-- to be changed -->
-        <p class="gameOverItem" id="gameWonScore">Score: <br> Hard level only</p>
-        <a href="newGame.html" class="btn btn-danger gameOverItem">Play again</a>
-        <a href="index.html" class="btn btn-danger gameOverItem">Quit game</a> <!-- to be changed -->
+        <p class="gameOverItem" id="gameWonScore">Score<br> Hard level only</p>
+        <!-- https://www.youtube.com/watch?v=o3MF_JmQxYg&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx&index=8 -->
+        <form class="form" id="scoreForm">
+            <div>
+                <h3>New top score</h3>
+            </div>
+            <div id="saveScoreSection">
+                <input type="text" name="playername" id="playername" placeholder="your name" />
+                <button type="submit" class="btn btn-success" id="saveScoreBtn" onclick="saveHighScore()">Save</button>
+            </div>
+            <div>
+                <p>Click the save button to store your best score</p>
+            </div>
+        </form>
+        <a href="newGame.html" class="btn btn-danger gameOverItem mt-3">Play again</a>
+        <a href="index.html" class="btn btn-danger gameOverItem mt-3">Quit game</a> <!-- to be changed -->
     </div>
 
 

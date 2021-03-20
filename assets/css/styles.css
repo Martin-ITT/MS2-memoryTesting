@@ -204,11 +204,20 @@ img {
   text-align: center;
   width: 100%;
   display: block;
-margin: auto;
+  margin: auto;
 }
 .gameOverItem {
   align-self: center;
 }
+/* save score form */
+#scoreForm {
+  /*visibility: hidden;*/
+}
+#saveScoreSection {
+  display:flex;
+  justify-content:center;
+}
+
 /* responsive */
 @media(min-width: 770px) {
   .memory-game.easy {

@@ -1,5 +1,8 @@
 console.log('gameover.js here! sessionStorage: ');
 console.log(sessionStorage);
+
+let score = ((20 - (JSON.parse(sessionStorage.getItem("flipCounter")))) *20) + JSON.parse(sessionStorage.getItem("timeCounter")); // score = flips left * 20 + time left
+
 // game over time out
 if (sessionStorage.getItem("reasonGameOver") === "flips") {   
 $('#gameOverID').html('Out of flips<br>' +'Number of flips: ' +sessionStorage.getItem("flipCounter") +'<br> Time left: ' +sessionStorage.getItem("timeCounter"));
@@ -12,8 +15,7 @@ else if (sessionStorage.getItem("reasonGameOver") === "time") {
 else if (sessionStorage.getItem("reasonGameOver") === "won") {
     $('#gameWonID').html('Well done!<br>' +'Number of flips: ' +sessionStorage.getItem("flipCounter") +'<br> Time left: ' +sessionStorage.getItem("timeCounter"));
     if (sessionStorage.getItem("gameHard") === "yes") {
-        let score = ((20 - (JSON.parse(sessionStorage.getItem("flipCounter")))) *20) + JSON.parse(sessionStorage.getItem("timeCounter")); // score = flips left * 20 + time left
-        $('#gameWonScore').html('Score: <br>' +'Your score is: ' +score); 
+        $('#gameWonScore').html('Score<br>' +score); 
     }
 }
 // game interrupted
