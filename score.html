@@ -38,5 +38,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-    <script src="./assets/js/score.js"></script>
+    <script>
+        if (!sessionStorage.getItem("highestScores")) {
+            sessionStorage.setItem("highestScores", JSON.stringify([{"score":120, "name": "Martin"},{"score":100, "name": "Sarah"},{"score":80, "name": "Peter"},{"score":60, "name": "Rob"},{"score":40, "name": "Aoife"}]));
+        }
+        const displayScores = JSON.parse(sessionStorage.getItem("highestScores"));
+        $('#best-score').html(displayScores);
+        console.log(sessionStorage.getItem("highestScores"));
+    </script>
 </body>

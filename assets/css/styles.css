@@ -211,7 +211,7 @@ img {
 }
 /* save score form */
 #scoreForm {
-  /*visibility: hidden;*/
+  /*display:none;*/
 }
 #saveScoreSection {
   display:flex;

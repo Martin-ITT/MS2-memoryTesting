@@ -25,8 +25,8 @@
                 <h3>New top score</h3>
             </div>
             <div id="saveScoreSection">
-                <input type="text" name="playername" id="playername" placeholder="your name" />
-                <button type="submit" class="btn btn-success" id="saveScoreBtn" onclick="saveHighScore()">Save</button>
+                <input type="text" name="playername" id="playername" placeholder="your name"/>
+                <button type="submit" class="btn btn-success" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
             </div>
             <div>
                 <p>Click the save button to store your best score</p>
@@ -46,5 +46,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-    <script src="./assets/js/gameover.js"></script> <!-- to be changed -->
+    <script src="./assets/js/gamewon.js"></script> <!-- to be changed -->
 </body>

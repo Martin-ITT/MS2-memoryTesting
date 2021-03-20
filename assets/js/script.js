@@ -314,3 +314,4 @@ function gameLost() {
     //$('#gameLostModal').modal('toggle');
     window.open("gameOver.html","_self");
 }
+
