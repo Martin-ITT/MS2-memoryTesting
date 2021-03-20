@@ -12,6 +12,14 @@ const timeIdSelector = document.getElementById('timeID');
 let timerOn = false; // timer not running
 //const cards = document.querySelectorAll('.memory-card'); has to be inside timeout function
 
+/*
+variables in session storage:
+reasonGameOver - won, flips, time, user
+Counter - flip counter
+timeCounter - time counter
+gameHard - yes, no - diff level
+*/
+
 
 // When document ready
 $('document').ready(function () {
@@ -23,18 +31,21 @@ $('document').ready(function () {
         //create 6 pairs game
         boardSize = 6;
         boardSizeClass = "easy";
+        sessionStorage.setItem("gameHard", "no");
     }
     else if (mode === "Medium") {
         //create 8 pairs game
         boardSize = 8;
         boardSizeClass = "medium";
         startTime = 1;
+        sessionStorage.setItem("gameHard", "no");
     }
     else if (mode === "Hard") {
         //create 10 pairs game
         boardSize = 10;
         boardSizeClass = "hard"
         startTime = 1;
+        sessionStorage.setItem("gameHard", "yes");
     }
     // get random logos 
     cardURL = getRandomImages(cardURL);
@@ -64,6 +75,7 @@ function getData(cb) {
       }
     }
   };
+  
   /* fill cardURL array from  */
   /* https://stackoverflow.com/questions/5836833/create-an-array-with-random-values */
   for (cardURL=[],i=0;i<330;++i) cardURL[i]=i; /* cardURL array to store logo URL's - loop throuhg 330 links */
@@ -78,12 +90,13 @@ function getData(cb) {
     }
     return array;
   }
+  
   /* function creating game - document writer */
   function createGame() {
     console.log('create game called');
-    sessionStorage.setItem("flips", 0); //clear session storage
-    sessionStorage.setItem("time", "no time limit");
-    sessionStorage.setItem("reasonGameOver", 0);
+    sessionStorage.setItem("flipCounter", 0); //clear session storage
+    sessionStorage.setItem("timeCounter", "no time limit");
+    sessionStorage.setItem("reasonGameOver", "user");
     //sessionStorage.clear(); // clear sessionStorage for new game
     console.log(sessionStorage);
     //call data function to retreive urls and create divs - cards
@@ -131,13 +144,10 @@ function getData(cb) {
     });
 }
 
-    
-
 /* temporary function to clear document for testing code 
 function clearDocument() {
     document.getElementById("demo").innerHTML = "";   
 }
-
 function test() {
     console.log(this);
 }
@@ -155,14 +165,14 @@ console.log('click listener timeout off');
 //flip card on click function
 function flipCard() {
     console.log('flipcard called');
-    if (boardSize >= 8  && !timerOn) startTimer(); // activate timer
+    if (boardSize >= 8  && !timerOn) startTimer(); // activate timer for med and hard
     if (numberOfFlips === 20 && boardSize === 10) { //game lost if more than 20 flips
         //$('#gameLostModal').modal('toggle');
         console.log('reason flips')
         sessionStorage.setItem("reasonGameOver", "flips"); //pass game lost over flips
-        gameLost(); 
+        gameLost(); // call gameLost function
     }
-    timerOn = true;
+    timerOn = true; //prevent restarting timer
     if (lockBoard) return; // rest of the code won't be executed if lockboard true. return = exit function
     if (this === firstCard) return; // prevent double click on first card
     this.classList.toggle('flip'); // toggle flip class on selected card
@@ -178,9 +188,9 @@ function flipCard() {
         hasFlippedCard = false; // first card has been already clicked as hasFlippedCard is true
         secondCard = this; // set second card variable
         numberOfFlips ++; // flip counter
-        sessionStorage.setItem("flips", numberOfFlips);// add number of flips to session storage
-        console.log('flips in session storage:' + sessionStorage.getItem("flips"));
-        $('#flipsID').html('FLIPS: '+numberOfFlips);
+        sessionStorage.setItem("flipCounter", numberOfFlips);// add number of flips to session storage
+        console.log('flips in session storage:' + sessionStorage.getItem("flipCounter"));
+        $('#flipsID').html('FLIPS: '+numberOfFlips); // JQUERY update num of flips in html
         console.log("flips:" +numberOfFlips);
         checkForMatch(); // call compare cards function
     } 
@@ -285,13 +295,13 @@ function startTimer() {
             timeIdSelector.innerHTML = `TIME: 0${minutes}:${seconds}`;
         if (time != 0) { // stops timer
         time --;
-        sessionStorage.setItem("time", time); // store time left in session storage
+        sessionStorage.setItem("timeCounter", time); // store time left in session storage
         console.log(time);
         }
         if (time == 0 ) { // end game
             clearInterval(interval);
             //$('#gameLostModal').modal('toggle');
-            console.log('reason time')
+            console.log('reason time');
             sessionStorage.setItem("reasonGameOver", "time"); // game lost over time
             gameLost();
             return;
