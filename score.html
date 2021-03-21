@@ -41,16 +41,16 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
     <script>
-        if (!sessionStorage.getItem("highestScores")) {
+        if (!sessionStorage.getItem("sessionHighestScores")) { //if user checks highest scores before playing at least one game
             console.log("html changing score");
-            sessionStorage.setItem("highestScores", JSON.stringify([{"score":120, "name": "Martin"},{"score":100, "name": "Sarah"},{"score":80, "name": "Peter"},{"score":60, "name": "Rob"},{"score":40, "name": "Aoife"}]));
+            sessionStorage.setItem("sessionHighestScores", JSON.stringify([{"score":120, "name": "Martin"},{"score":100, "name": "Sarah"},{"score":45, "name": "Peter"},{"score":40, "name": "Rob"},{"score":20, "name": "Aoife"}]));
         }
-        const displayScores = JSON.parse(sessionStorage.getItem("highestScores"));
-        const scoreList = document.getElementById("best-score");
+        const displayScores = JSON.parse(sessionStorage.getItem("sessionHighestScores")); //convert string into object
+        const scoreList = document.getElementById("best-score"); // score writer
         scoreList.innerHTML =  displayScores.map( score => {
             return `<tr><td>${score.name}</td><td>${score.score}</td></tr>`
         }).join("");
-        console.log(sessionStorage.getItem("highestScores"));
+        console.log(sessionStorage.getItem("sessionHighestScores"));
         console.log(displayScores);
         console.log(typeof(displayScores));
     </script>

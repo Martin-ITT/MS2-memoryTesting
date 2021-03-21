@@ -10,6 +10,8 @@ let startTime; // time limit variable in minutes
 let time; // time limit stored in seconds
 const timeIdSelector = document.getElementById('timeID');
 let timerOn = false; // timer not running
+let maxFlipsForHard = 25; // change max num of flips for hard game
+let maxTimeForHard = 1.5; // change max time for hard game
 //const cards = document.querySelectorAll('.memory-card'); has to be inside timeout function
 
 /*
@@ -44,7 +46,7 @@ $('document').ready(function () {
         //create 10 pairs game
         boardSize = 10;
         boardSizeClass = "hard"
-        startTime = 1;
+        startTime = maxTimeForHard;
         sessionStorage.setItem("gameHard", "yes");
     }
     // get random logos 
@@ -52,15 +54,6 @@ $('document').ready(function () {
     // create game 
     createGame();
 });
-
-
-/* call functions on document ready - https://stackoverflow.com/questions/17567176/how-to-call-a-function-inside-document-ready/17567264 
-$(document).ready(function(){
-    // call function to shuffle the cards
-    cardURL = shuffle(cardURL);
-    createGame();
-       
-  });
 
 /* get data from JSON */
 function getData(cb) {
@@ -97,22 +90,12 @@ function getData(cb) {
     sessionStorage.setItem("flipCounter", 0); //clear session storage
     sessionStorage.setItem("timeCounter", "no time limit");
     sessionStorage.setItem("reasonGameOver", "user");
-    //sessionStorage.clear(); // clear sessionStorage for new game
     console.log(sessionStorage);
     //call data function to retreive urls and create divs - cards
     getData(function(data) {
-        /*
-        for (let i=1; i<boardSize; i++) {
-        let x = cardURL[i];
-        let carBox = document.querySelectorAll("#card"+i);
-        carBox.forEach((e) => {
-        e.innerHTML = '<img src="'+data[x].url+'" alt="Car logo" width="150" height="120" border="1px black solid"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg" style="width: 120px" alt="JS Badge" />';
-        */
+      
         for (let i=0; i<boardSize; i++) {
             let x = cardURL[i];
-            //document.getElementById("game-board").innerHTML += '<div class="memory-card" id="card'+i +'" data-framework="card'+i+'"><img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
-            //document.getElementById("game-board").innerHTML += '<div class="memory-card" id="card'+i +'" data-framework="card'+i+'"><img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
-            
             //creating first card element
             let firstDiv = document.createElement('div');
             //creating second card element
@@ -131,27 +114,12 @@ function getData(cb) {
             //appending elements to a parent
             content.appendChild(firstDiv).innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./assets/img/www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
             content.appendChild(secondDiv).innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./assets/img/www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
-            //document.querySelectorAll(".card"+i)
-            //.innerHTML += '<div class="memory-card" id="card'+i +'" data-framework="card'+i+'"><img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
-            /*const fakeImages = document.querySelectorAll(".memory-card");
-            fakeImages.forEach(fakeImage => {
-                fakeImage.innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
-            });*/
         }
     // add class to identify game size for css
     const changeDiv = document.getElementById('game-board');
     changeDiv.classList.add(boardSizeClass);
     });
 }
-
-/* temporary function to clear document for testing code 
-function clearDocument() {
-    document.getElementById("demo").innerHTML = "";   
-}
-function test() {
-    console.log(this);
-}
-*/
 
 // card click event listener
 // timeout to fix readyState problem - wouldn't flip card
@@ -160,14 +128,26 @@ console.log('click listener timeout on');
 const cards = document.querySelectorAll('.memory-card');
 cards.forEach(card => card.addEventListener('click', flipCard));
 console.log('click listener timeout off');
-},100);
+},500);
+
+// shuffle cards on board
+setTimeout(() => { 
+// IIFE imediately invoked function
+    (function shuffleCards() {
+        console.log('shuffle called');
+        let cards = document.querySelectorAll('.memory-card');
+        cards.forEach(card => {
+            let randomPos = Math.floor(Math.random() * 100); // returns random number between 0-1 and, multiply to get num 0-100, floor makes it integer 
+            card.style.order =randomPos;
+        });
+    })();
+ },1000);
 
 //flip card on click function
 function flipCard() {
     console.log('flipcard called');
     if (boardSize >= 8  && !timerOn) startTimer(); // activate timer for med and hard
-    if (numberOfFlips === 20 && boardSize === 10) { //game lost if more than 20 flips
-        //$('#gameLostModal').modal('toggle');
+    if (numberOfFlips === maxFlipsForHard && boardSize === 10) { //game lost if more than 20 flips
         console.log('reason flips')
         sessionStorage.setItem("reasonGameOver", "flips"); //pass game lost over flips
         gameLost(); // call gameLost function
@@ -200,35 +180,26 @@ function flipCard() {
 function checkForMatch() {
     console.log('checking match');
     //do cards match?
-    //setTimeout(() => { 
         console.log('checking timeout on');
         //if cards match call function to remove click listeners. if cards dont match call another function flip them back
         let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
-        isMatch ? disableCards() : unflipCards();
-        /*
-        if (firstCard.dataset.framework === secondCard.dataset.framework) {
-            // cards match - remove event listeners click
-          disableCards();
-        }
-        else {
-            //not matching
-            unflipCards();
-        }*/
-    //},100);// do I need this timer?
+        isMatch ? disableCards() : unflipCards(); // if cards match call disable cards otherwise flip them back
     console.log('checking timeout off');
 }
 
-// remove click event listeners 
+// cards match remove click event listeners 
 function disableCards() {
     console.log('disable cards called');
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
-    matchedPairs ++; //matched pairs counter
+    matchedPairs ++; //matched pairs counter to allow for game end - all cards disabled
     // call function to clear/restore variables
     resetBoard();
+    //check if game won
     checkGameWon ();
 }
-// flip cards back
+
+// no match flip cards back
 function unflipCards() {
     console.log('unflip caled');
     lockBoard = true; // only two cards can be flipped at a same time
@@ -243,24 +214,11 @@ function unflipCards() {
     },1500); //cards will flip back in 1.5 sec
     console.log('unflip timer off');    
 }
-// restore variables as before clicking cards
+// restore variables as before clicking cards again
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
-  }
-  
-  setTimeout(() => { 
-   // IIFE imediately invoked function
-   // shuffle cards on board
-  (function shuffleCards() {
-      console.log('shuffle called');
-      let cards = document.querySelectorAll('.memory-card');//is this legal - defining variable twice
-      cards.forEach(card => {
-          let randomPos = Math.floor(Math.random() * 100); // returns random number between 0-1 and, multiply to get num 0-100, floor makes it integer 
-          card.style.order =randomPos;
-      });
-  })();
-},1000);
+}
 
 //check if all cards are flipped
 function checkGameWon(){
@@ -269,49 +227,45 @@ function checkGameWon(){
     let gameWon = matchedPairs === boardSize;
     gameWon ? gameComplete() :resetBoard();
 }
+
 // game was won
 function gameComplete() {
     console.log('gamecomplete called');
     sessionStorage.setItem("reasonGameOver", "won");
-    //$('#gameWonModal').modal('toggle');
     setTimeout(() => {
     window.open("gameWon.html","_self");
     },1000);// 1 sec delay after game won
 }
 
+// timer 
 function startTimer() {
     // timer https://www.youtube.com/watch?v=x7WJEmxNlEs
     // https://stackoverflow.com/questions/5978519/how-to-use-setinterval-and-clearinterval
     var interval = setInterval(updateTimer, 1000); //run time every second and stop on out of time
-    
-    time = startTime * 60;
-    
+    time = startTime * 60; // change to seconds
     function updateTimer() {
-       // while (time != 1) {
-            const minutes = Math.floor(time/60);
-            let seconds = time % 60;
-
-            seconds = seconds < 10 ? '0' + seconds : seconds; //format time - if less than ten seconds add leading zero otherwise display normal
-            timeIdSelector.innerHTML = `TIME: 0${minutes}:${seconds}`;
+        const minutes = Math.floor(time/60);
+        let seconds = time % 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds; //format time - if less than ten seconds add leading zero otherwise display normal
+        timeIdSelector.innerHTML = `TIME: 0${minutes}:${seconds}`;
         if (time != 0) { // stops timer
-        time --;
-        sessionStorage.setItem("timeCounter", time); // store time left in session storage
-        console.log(time);
+            time --;
+            sessionStorage.setItem("timeCounter", time); // store time left in session storage
+            console.log(time);
         }
         if (time == 0 ) { // end game
             clearInterval(interval);
-            //$('#gameLostModal').modal('toggle');
             console.log('reason time');
             sessionStorage.setItem("reasonGameOver", "time"); // game lost over time
             gameLost();
             return;
         }
-      //  }
     }
 }
+
+// game lost
 function gameLost() {
     console.log('gameLost called');
-    //$('#gameLostModal').modal('toggle');
     window.open("gameOver.html","_self");
 }
 
