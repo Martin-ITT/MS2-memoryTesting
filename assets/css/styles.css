@@ -18,6 +18,7 @@ body {
   position: relative;
 }
 .hero-image-game{
+  margin:0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/www.pexels.com--photo--photo-of-five-cars-parked-1280560.jpg");
   min-height: 84vh;
   background-position: center;

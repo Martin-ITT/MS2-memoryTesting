@@ -9,13 +9,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    -->
     <title>Game</title>
 </head>
-<body class="hero-image-game" onload="myFunction()" style="margin:0;">
-   
+<!-- main window -->
+<body class="hero-image-game" onload="myFunction()"> <!-- initialize game on load -->
+    <!-- loader spinner -->
     <!-- https://www.w3schools.com/howto/howto_css_loader.asp -->
     <div id="spinner">
         <div class="cube1"></div>
@@ -37,12 +35,12 @@
     </div>
 
     <!-- game screen -->
-    <div class="memory-game" id="game-board"> 
+    <div class="memory-game" id="game-board"> <!-- game written here-->
     </div>
-
-    <div class="modal fade" id="#gameLostModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true"> <!-- removed role="dialog" -->
+    <!-- 
+    <div class="modal fade" id="#gameLostModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true"> <!-- removed role="dialog" 
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content"> <!-- add class mainMenu-->
+            <div class="modal-content"> <!-- add class mainMenu-
                 <div class="modal-header">
                     <h5 class="modal-title m-auto">Menu</h5>
                 </div>
@@ -53,7 +51,7 @@
             </div>
         </div>
     </div>
-
+-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -65,18 +63,11 @@
     crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script> 
 
-    <script>
-        //sessionStorage.setItem("name", "martin");
-        //sessionStorage.removeItem("name");
-        //sessionStorage.getItem("age");
-        //console.log(sessionStorage.key(0)); // will get key of index 0
-        //console.log(sessionStorage);
+    <script> // display/hide loader spinner
         var myVar;
-        
         function myFunction() {
         myVar = setTimeout(showPage, 3000);
         }
-        
         function showPage() {
         document.getElementById("spinner").style.display = "none";
         document.getElementById("game-board").style.display = "flex";

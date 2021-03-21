@@ -3,16 +3,12 @@ body, html {
     margin: 0;
     height: 100%;
 }
-nav {
-    /*height: 7%;*/
+/* navbar*/
+nav { 
     background-color: #885445;
 }
-footer {
-    height: 9%;
-    background-color: #885445;
-}
-footer img {
-    height: 30px;
+nav img {
+    height: 20px;
 }
 .navbar-dark
 .navbar-brand {
@@ -20,6 +16,14 @@ footer img {
 }
 .navbar-dark .navbar-nav .nav-link {
     color: #000000;
+}
+/*footer*/
+footer {
+    height: 9%;
+    background-color: #885445;
+}
+footer img {
+    height: 30px;
 }
 footer p{
     color: #000000;
@@ -29,11 +33,8 @@ footer p{
 footer p {
     margin:0;
 }
-nav img {
-    height: 20px;
-}
+/* The hero image - style suggested by mentor Adegbenga Adeye*/
 /* https://www.w3schools.com/howto/howto_css_hero_image.asp */
-/* The hero image */
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/www.pexels.com--photo--photo-of-car-on-expressway-3422964.jpg");
@@ -59,17 +60,19 @@ nav img {
   transform: translate(-50%, -50%);
   color: white;
 }
+/* Index.html modal*/
 /*modal windows color*/
 .modal-content {
     background-color: #000000;
-    color: #ffffff;
-    
+    color: #ffffff; 
 }
 /* modal butons */
 .my-btn {
     height: 3em;
     width: 10em;
 }
+/* contact.html */
+/* address section */
 #contact-address {
     padding-top: 3vh;
     color: #ffffff;
@@ -80,9 +83,11 @@ nav img {
 #contact-address h6{
     font-size: .5em;
 }
+/* map section */
 #contact-map {
     height: 200px;
 }
+/* form section */
 #contact-form {
     width: 90%;
     padding-top: 10px;
@@ -90,11 +95,9 @@ nav img {
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.5);
 }
-
 #contact-form h2 {
     font-size: 0.8em;
 }
-
 #contact-form label,
 #contact-form #emailHelp {
     font-size: 0.7em;
@@ -102,7 +105,6 @@ nav img {
     margin: 0;
     padding: 0;
 }
-
 #contact-form input[type=text],
 #contact-form input[type=email],
 #contact-form input[type=date],
@@ -115,16 +117,12 @@ nav img {
     background-color: transparent;
     font-family: 'Ovo', Copperlate, Tahoma;
 }
-
 #contact-form .form-control {
     color: rgba(255, 255, 255, 0.4);
 };
-
-
 #contact-form .form-control option {
     color: #000000;
 }
-
 #contact-form ::placeholder {
     color: #ffffff;
 }
