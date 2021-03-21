@@ -9,11 +9,19 @@ const saveScoreBtn = document.getElementById("saveScoreBtn"); // save btn
 $('#gameWonID').html('Well done!<br>' +'Number of flips: ' +sessionStorage.getItem("flipCounter") +'<br> Time left: ' +sessionStorage.getItem("timeCounter")); // update flips & time
 if (sessionStorage.getItem("gameHard") === "yes") { // count score for hard level
     currentScore = ((20 - (JSON.parse(sessionStorage.getItem("flipCounter")))) *20) + JSON.parse(sessionStorage.getItem("timeCounter")); // count score = flips left * 20 + time left
-    $('#gameWonScore').html('Score<br>' +currentScore); //display score
+    $('#gameWonScore').html('Score:' +currentScore); //display score
     if (currentScore > localHighestScores[4].score){ // if current is better  than last allow to save
-    $("#scoreForm").css("display","block"); // display high score section
+    //$("#scoreForm").css("display","block"); // display high score section
     console.log('testmodal');
-    //$('saveScoreModal').modal('toggle');
+    $('#saveScoreModal').modal('toggle');
+    $('#gameWonIDCongrat').html('Well done!<br>' +'Number of flips: ' +sessionStorage.getItem("flipCounter") +'<br> Time left: ' +sessionStorage.getItem("timeCounter"));
+    $('#gameWonScoreCongrat').html('Score:' +currentScore);
+    }
+}
+// https://stackoverflow.com/questions/9841363/how-to-restrict-number-of-characters-that-can-be-entered-in-html5-number-input-f
+function limitKeypress(event, value, maxLength) {
+    if (value != undefined && value.toString().length >= maxLength) {
+        event.preventDefault();
     }
 }
 

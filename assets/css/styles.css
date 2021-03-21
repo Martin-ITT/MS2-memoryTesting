@@ -209,9 +209,32 @@ img {
 .gameOverItem {
   align-self: center;
 }
-/* save score form */
-#scoreForm {
-  display:none;
+/* game won modal*/
+.modal-content {
+  background-color: #000000;
+  color: #ffffff;
+  
+}
+/* modal butons */
+.my-btn {
+  height: 3em;
+  width: 10em;
+}
+/*https://stackoverflow.com/questions/7381446/center-html-input-text-field-placeholder*/
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}
+
+:-ms-input-placeholder {  
+  text-align: center; 
 }
 #saveScoreSection {
   display:flex;

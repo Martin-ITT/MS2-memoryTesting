@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    -->
     <title>The Car club</title>
 </head>
 <body>
@@ -31,20 +28,22 @@
             </ul>
         </div>
     </nav>
+    <!-- main window with hero image -->
     <div class="hero-image">
         <div class="hero-text">
+            <!--
             <div id="data">
             </div>
+            -->
             <h1>The Car Club</h1>
             <p>Where the fun lives</p>
-            <!-- MODALS from https://getbootstrap.com/ -->
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#menuModal">Let's begin</button>
         </div>
-        <!-- Menu Modal -->
-        <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true"> <!-- removed role="dialog" -->
+        <!-- Menu Modal -- MODALS from https://getbootstrap.com/ -->
+        <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content"> <!-- add class mainMenu-->
+                <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title m-auto">Menu</h5>
                     </div>
@@ -78,6 +77,7 @@
                                 <p>The aim is to collect all pairs of cards as soon as possible using minimum flips. On each turn, you'll flip two cards over.
                                     If cards doesn't match they will flip back and you might have another try if you didn't run out of flips depending on game settings.
                                     If cards match they will stay facing up.</p> 
+                                <p>Best of luck!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn exit-button button-click btn-danger" data-toggle="modal"
@@ -114,7 +114,7 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
     <script>
-        if (!sessionStorage.getItem("sessionHighestScores")) { // set best scores if empty
+        if (!sessionStorage.getItem("sessionHighestScores")) { // set best scores in sessionStorage if empty
             console.log("html changing score");
             const bestScoresSetter = [90, 70, 50, 30, 10]; // change default score here
             sessionStorage.setItem("sessionHighestScores", JSON.stringify([{"score":bestScoresSetter[0], "name": "Martin"},{"score":bestScoresSetter[1], "name": "Sarah"},{"score":bestScoresSetter[2], "name": "Peter"},{"score":bestScoresSetter[3], "name": "Rob"},{"score":bestScoresSetter[4], "name": "Aoife"}]));

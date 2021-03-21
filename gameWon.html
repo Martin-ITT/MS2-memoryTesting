@@ -19,20 +19,6 @@
         <h2 class="gameOverItem">Game Won</h2> <!-- to be changed-->
         <p class="gameOverItem" id="gameWonID">Test</p> <!-- to be changed -->
         <p class="gameOverItem" id="gameWonScore">Score<br> Hard level only</p>
-        <!-- https://www.youtube.com/watch?v=o3MF_JmQxYg&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx&index=8 -->
-        <form class="form" id="scoreForm">
-            <div>
-                <h3>New top score</h3>
-            </div>
-            <div id="saveScoreSection">
-                <input type="text" name="playername" id="playername" placeholder="your name"/>
-                <button type="submit" class="btn btn-success" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
-            </div>
-            <div>
-                <p>Click save to store your best score</p>
-            </div>
-        </form>
-        <!---->
         <div id="index-page">
             <div>
                 <button type="button" class="btn btn-primary" onclick="window.location.href='newGame.html';">New game</button>
@@ -42,24 +28,39 @@
             </div>
         </div>
     </div>
-    <!--
-    <div class="modal fade bs-example-modal-sm" id="saveScoreModal" tabindex="-1" role="dialog" aria-labelledby="saveScoreModal" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
+
+    <div class="modal fade" id="saveScoreModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true"> <!-- removed role="dialog" -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content"> <!-- add class mainMenu-->
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">Login</h4>
+                    <h3 class="modal-title m-auto">Congratulations!</h3>
                 </div>
-                <div class="modal-body">
-                    <form action="" method="post">
-                        <p><input type="text" class="form-control" placeholder="Username" name="username" value=""></p>
-                        <p><input type="password" class="form-control" placeholder="Password" name="password" value=""></p>
-                        <p><input class="btn btn-primary form-control" type="submit" value="Login"></p>
+                <div class="modal-body m-auto">
+                    <form class="form" id="scoreForm">
+                        <div class="row">
+                            <h5 class="m-auto pb-4">Excellent score</h5>
+                        </div>
+                        <div class="gameOverItem m-auto text-center pb-2" id="gameWonIDCongrat"></div> <!-- to be changed -->
+                        <div class="gameOverItem m-auto text-center pb-2" id="gameWonScoreCongrat"></div>
+                        <div class="input-group" id="saveScoreSection">
+                            <input type="text" name="playername" id="playername" onkeypress="limitKeypress(event,this.value,12)" placeholder="your name"/>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-success" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <small class="text-muted">Player name can be max of 12 letters<br></small>
+                            <small class="text-muted">Click the save button to store your best score</small>
+                        </div>
                     </form>
-                </div>
+                </div>     
+                <div class="modal-footer">
+                    <button type="button" class="btn exit-button button-click btn-danger" data-toggle="modal"
+                        data-target="#menuModal" data-dismiss="modal">Don't save</button>
+                </div> 
             </div>
         </div>
-    -->
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
