@@ -29,13 +29,37 @@
                 <button type="submit" class="btn btn-success" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
             </div>
             <div>
-                <p>Click the save button to store your best score</p>
+                <p>Click save to store your best score</p>
             </div>
         </form>
-        <a href="newGame.html" class="btn btn-danger gameOverItem mt-3">Play again</a>
-        <a href="index.html" class="btn btn-danger gameOverItem mt-3">Quit game</a> <!-- to be changed -->
+        <!---->
+        <div id="index-page">
+            <div>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='newGame.html';">New game</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-danger" onclick="window.location.href='index.html';">Main menu</button>
+            </div>
+        </div>
     </div>
-
+    <!--
+    <div class="modal fade bs-example-modal-sm" id="saveScoreModal" tabindex="-1" role="dialog" aria-labelledby="saveScoreModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        <p><input type="text" class="form-control" placeholder="Username" name="username" value=""></p>
+                        <p><input type="password" class="form-control" placeholder="Password" name="password" value=""></p>
+                        <p><input class="btn btn-primary form-control" type="submit" value="Login"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

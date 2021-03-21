@@ -17,9 +17,14 @@
 <body class="hero-image">
     <div id="gameOverDiv">
         <h2 class="gameOverItem">Game Over</h2>
-        <p class="gameOverItem" id="gameOverID">Test</p>
-        <a href="newGame.html" class="btn btn-danger gameOverItem">Play again</a>
-        <a href="index.html" class="btn btn-danger gameOverItem">Quit game</a>
+        <p class="gameOverItem" id="gameOverID">Test</p><div id="index-page">
+            <div>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='newGame.html';">New game</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-danger" onclick="window.location.href='index.html';">Main menu</button>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

@@ -1,11 +1,9 @@
 
 // variables
 let currentScore; // last game score
-const bestScoresSetter = [90, 70, 50, 30, 10]; // change default score here
-const localHighestScores = JSON.parse(sessionStorage.getItem("sessionHighestScores")) || [ {"score":bestScoresSetter[0], "name": "Martin"},{"score":bestScoresSetter[1], "name": "Sarah"},{"score":bestScoresSetter[2], "name": "Peter"},{"score":bestScoresSetter[3], "name": "Rob"},{"score":bestScoresSetter[4], "name": "Aoife"}]; // local best scores
+var localHighestScores = JSON.parse(sessionStorage.getItem("sessionHighestScores"));// || [ {"score":bestScoresSetter[0], "name": "Martin"},{"score":bestScoresSetter[1], "name": "Sarah"},{"score":bestScoresSetter[2], "name": "Peter"},{"score":bestScoresSetter[3], "name": "Rob"},{"score":bestScoresSetter[4], "name": "Aoife"}]; // local best scores
 const playername = document.getElementById("playername"); // name input
 const saveScoreBtn = document.getElementById("saveScoreBtn"); // save btn
-
 
 //document writer - update time & score. display high score section on condition
 $('#gameWonID').html('Well done!<br>' +'Number of flips: ' +sessionStorage.getItem("flipCounter") +'<br> Time left: ' +sessionStorage.getItem("timeCounter")); // update flips & time
@@ -14,6 +12,8 @@ if (sessionStorage.getItem("gameHard") === "yes") { // count score for hard leve
     $('#gameWonScore').html('Score<br>' +currentScore); //display score
     if (currentScore > localHighestScores[4].score){ // if current is better  than last allow to save
     $("#scoreForm").css("display","block"); // display high score section
+    console.log('testmodal');
+    //$('saveScoreModal').modal('toggle');
     }
 }
 
@@ -36,7 +36,7 @@ saveHighScore = (e) => {
     localHighestScores.push(storedScore); // add key:value to stored score object
     localHighestScores.sort( (a,b) => b.score - a.score); // sort by score
     localHighestScores.splice(5); // only allow five records
-    sessionStorage.setItem("sessionHighestScores", JSON.stringify(localHighestScores)); // store to session memory
+    sessionStorage.setItem("sessionHighestScores", JSON.stringify(localHighestScores)); // sting and store to session memory
     console.log(localHighestScores[4]);
     console.log(JSON.stringify(localHighestScores));
     window.open("score.html","_self"); // open best scores window

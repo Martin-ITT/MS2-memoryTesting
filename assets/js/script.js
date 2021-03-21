@@ -10,16 +10,17 @@ let startTime; // time limit variable in minutes
 let time; // time limit stored in seconds
 const timeIdSelector = document.getElementById('timeID');
 let timerOn = false; // timer not running
-let maxFlipsForHard = 25; // change max num of flips for hard game
-let maxTimeForHard = 1.5; // change max time for hard game
+let maxFlipsForHard = 20; // change max num of flips for hard game
+let maxTimeForHard = 1; // change max time for hard game
 //const cards = document.querySelectorAll('.memory-card'); has to be inside timeout function
 
 /*
 variables in session storage:
 reasonGameOver - won, flips, time, user
-Counter - flip counter
+flipCounter - flip counter
 timeCounter - time counter
 gameHard - yes, no - diff level
+sessionHighestScores - highest scores
 */
 
 

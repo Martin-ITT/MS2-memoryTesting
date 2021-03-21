@@ -39,7 +39,7 @@
             <p>Where the fun lives</p>
             <!-- MODALS from https://getbootstrap.com/ -->
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#menuModal">Let's begin</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#menuModal">Let's begin</button>
         </div>
         <!-- Menu Modal -->
         <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true"> <!-- removed role="dialog" -->
@@ -50,46 +50,18 @@
                     </div>
                     <div class="modal-body m-auto">
                         <div class="row">
-                            <!--
-                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#newGameModal" data-dismiss="modal">New game</button>
-                            -->
-                            <button type="button" class="btn btn-secondary my-btn m-1" onclick="window.location.href='newGame.html';">New game</button>                          
+                            <button type="button" class="btn btn-info my-btn m-1" onclick="window.location.href='newGame.html';">New game</button>                          
                           </div>
                           <div class="row">
-                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#howToModal" data-dismiss="modal">How to play</button>                           
+                            <button type="button" class="btn btn-info my-btn m-1" data-toggle="modal" data-target="#howToModal" data-dismiss="modal">How to play</button>                           
                           </div>
                           <div class="row">
-                            <button type="button" class="btn btn-secondary my-btn m-1" onclick="window.location.href='score.html';">Top Score</button>                           
+                            <button type="button" class="btn btn-info my-btn m-1" onclick="window.location.href='score.html';">Top Score</button>                           
                           </div>
                     </div>      
                 </div>
             </div>
         </div>
-         <!-- New Game Modal 
-         <div class="modal fade" id="newGameModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header"> 
-                        <h4 class="modal-title m-auto">New Game</h4>
-                    </div>
-                    <div class="modal-body m-auto">
-                        <div class="row">
-                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#trainingModal" data-dismiss="modal" onclick="window.location.href='game.html?mode=Easy';">Easy</button>                           
-                        </div>
-                        <div class="row">
-                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#mediumModal" data-dismiss="modal" onclick="window.location.href='game.html?mode=Medium';">Medium</button>                           
-                        </div>
-                        <div class="row">
-                            <button type="button" class="btn btn-secondary my-btn m-1" data-toggle="modal" data-target="#hardModal" data-dismiss="modal" onclick="window.location.href='game.html?mode=Hard';">Hard</button>                           
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn exit-button button-click" data-toggle="modal"
-                            data-target="#menuModal" data-dismiss="modal">Back</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <!-- How to play Modal -->
         <div class="modal fade" id="howToModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -108,14 +80,13 @@
                                     If cards match they will stay facing up.</p> 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn exit-button button-click btn-primary" data-toggle="modal"
+                        <button type="button" class="btn exit-button button-click btn-danger" data-toggle="modal"
                             data-target="#menuModal" data-dismiss="modal">Back</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- FOOTER from BS4-->
     <footer>
         <div class="page-footer text-center">
@@ -142,5 +113,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+    <script>
+        if (!sessionStorage.getItem("sessionHighestScores")) { // set best scores if empty
+            console.log("html changing score");
+            const bestScoresSetter = [90, 70, 50, 30, 10]; // change default score here
+            sessionStorage.setItem("sessionHighestScores", JSON.stringify([{"score":bestScoresSetter[0], "name": "Martin"},{"score":bestScoresSetter[1], "name": "Sarah"},{"score":bestScoresSetter[2], "name": "Peter"},{"score":bestScoresSetter[3], "name": "Rob"},{"score":bestScoresSetter[4], "name": "Aoife"}]));
+        }
+    </script>
 </body>
 </html>

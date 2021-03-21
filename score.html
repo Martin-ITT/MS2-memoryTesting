@@ -22,15 +22,14 @@
 
             </table>
         </div>
-       
         <div>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='index.html';">Back</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='newGame.html';">New game</button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='index.html';">Main menu</button>
         </div>
     </div>
     
-
-    
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -41,10 +40,6 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
     <script>
-        if (!sessionStorage.getItem("sessionHighestScores")) { //if user checks highest scores before playing at least one game
-            console.log("html changing score");
-            sessionStorage.setItem("sessionHighestScores", JSON.stringify([{"score":120, "name": "Martin"},{"score":100, "name": "Sarah"},{"score":45, "name": "Peter"},{"score":40, "name": "Rob"},{"score":20, "name": "Aoife"}]));
-        }
         const displayScores = JSON.parse(sessionStorage.getItem("sessionHighestScores")); //convert string into object
         const scoreList = document.getElementById("best-score"); // score writer
         scoreList.innerHTML =  displayScores.map( score => {
