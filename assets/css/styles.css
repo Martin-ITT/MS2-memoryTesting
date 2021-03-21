@@ -211,13 +211,15 @@ img {
 }
 /* save score form */
 #scoreForm {
-  /*display:none;*/
+  display:none;
 }
 #saveScoreSection {
   display:flex;
   justify-content:center;
 }
-
+table td{
+  color:white;
+}
 /* responsive */
 @media(min-width: 770px) {
   .memory-game.easy {

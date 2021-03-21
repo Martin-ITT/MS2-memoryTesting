@@ -1,13 +1,16 @@
 
 // variables
 let currentScore; // last game score
-const highestScores = JSON.parse(sessionStorage.getItem("highestscores")) || [ {"score":120, "name": "Martin"},{"score":100, "name": "Sarah"},{"score":80, "name": "Peter"},{"score":80, "name": "Rob"},{"score":60, "name": "Aoife"}]; // best scores
-
+const highestScores = JSON.parse(sessionStorage.getItem("highestscores")) || [ {"score":120, "name": "Martin"},{"score":100, "name": "Sarah"},{"score":80, "name": "Peter"},{"score":60, "name": "Rob"},{"score":40, "name": "Aoife"}]; // best scores
+console.log(highestScores);
+console.log(highestScores[4].score);
 $('#gameWonID').html('Well done!<br>' +'Number of flips: ' +sessionStorage.getItem("flipCounter") +'<br> Time left: ' +sessionStorage.getItem("timeCounter"));
 if (sessionStorage.getItem("gameHard") === "yes") {
     currentScore = ((20 - (JSON.parse(sessionStorage.getItem("flipCounter")))) *20) + JSON.parse(sessionStorage.getItem("timeCounter")); // score = flips left * 20 + time left
     $('#gameWonScore').html('Score<br>' +currentScore); 
+    if (currentScore > highestScores[4].score){
     $("#scoreForm").css("display","block"); // display high score section
+    }
 }
 
 // score 
@@ -41,7 +44,7 @@ saveHighScore = (e) => {
     })*/
     highestScores.splice(5); // only allow five records
     sessionStorage.setItem("highestScores", JSON.stringify(highestScores));
-    console.log(highestScores);
+    console.log(highestScores[4]);
     console.log(JSON.stringify(highestScores));
     window.open("score.html","_self");
 }

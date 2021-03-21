@@ -17,8 +17,10 @@
 <body class="hero-image-game">
     <div id="index-page">
         <h1>Best players</h1>
-        <div id="best-score">
-            
+        <div>
+            <table class="table table-hover" id="best-score">
+
+            </table>
         </div>
        
         <div>
@@ -40,10 +42,16 @@
     crossorigin="anonymous"></script>
     <script>
         if (!sessionStorage.getItem("highestScores")) {
+            console.log("html changing score");
             sessionStorage.setItem("highestScores", JSON.stringify([{"score":120, "name": "Martin"},{"score":100, "name": "Sarah"},{"score":80, "name": "Peter"},{"score":60, "name": "Rob"},{"score":40, "name": "Aoife"}]));
         }
         const displayScores = JSON.parse(sessionStorage.getItem("highestScores"));
-        $('#best-score').html(displayScores);
+        const scoreList = document.getElementById("best-score");
+        scoreList.innerHTML =  displayScores.map( score => {
+            return `<tr><td>${score.name}</td><td>${score.score}</td></tr>`
+        }).join("");
         console.log(sessionStorage.getItem("highestScores"));
+        console.log(displayScores);
+        console.log(typeof(displayScores));
     </script>
 </body>
