@@ -16,6 +16,7 @@ if (sessionStorage.getItem("gameHard") === "yes") { // count score for hard leve
     $('#gameWonScoreCongrat').html('Score:' +currentScore);
     }
 }
+// name length input restriciton
 // https://stackoverflow.com/questions/9841363/how-to-restrict-number-of-characters-that-can-be-entered-in-html5-number-input-f
 function limitKeypress(event, value, maxLength) {
     if (value != undefined && value.toString().length >= maxLength) {
@@ -23,7 +24,7 @@ function limitKeypress(event, value, maxLength) {
     }
 }
 
-// name must be typed in input
+// blank name input restriciton
 playername.addEventListener("keyup", () =>  {
     //disable button if no name
     saveScoreBtn.disabled = !playername.value;
