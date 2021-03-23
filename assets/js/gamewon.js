@@ -1,4 +1,3 @@
-
 // variables
 let currentScore; // last game score
 var localHighestScores = JSON.parse(sessionStorage.getItem("sessionHighestScores"));// || [ {"score":bestScoresSetter[0], "name": "Martin"},{"score":bestScoresSetter[1], "name": "Sarah"},{"score":bestScoresSetter[2], "name": "Peter"},{"score":bestScoresSetter[3], "name": "Rob"},{"score":bestScoresSetter[4], "name": "Aoife"}]; // local best scores
@@ -12,7 +11,6 @@ if (sessionStorage.getItem("gameHard") === "yes") { // count score for hard leve
     $('#gameWonScore').html('Score:' +currentScore); //display score
     if (currentScore > localHighestScores[4].score){ // if current is better  than last allow to save
     //$("#scoreForm").css("display","block"); // display high score section
-    console.log('testmodal');
     $('#saveScoreModal').modal('toggle');
     $('#gameWonIDCongrat').html('Well done!<br>' +'Number of flips: ' +sessionStorage.getItem("flipCounter") +'<br> Time left: ' +sessionStorage.getItem("timeCounter"));
     $('#gameWonScoreCongrat').html('Score:' +currentScore);
@@ -29,23 +27,18 @@ function limitKeypress(event, value, maxLength) {
 playername.addEventListener("keyup", () =>  {
     //disable button if no name
     saveScoreBtn.disabled = !playername.value;
-    console.log(playername.value);
 });
 
 // on btn click sort and save score
 saveHighScore = (e) => {
-    console.log("save score button clicked");
     e.preventDefault(); // prevents submitting form on default
     const storedScore = { // set as key:value pair to add to object
         score: currentScore,
         name: playername.value
     };
-    console.log(storedScore);
     localHighestScores.push(storedScore); // add key:value to stored score object
     localHighestScores.sort( (a,b) => b.score - a.score); // sort by score
     localHighestScores.splice(5); // only allow five records
     sessionStorage.setItem("sessionHighestScores", JSON.stringify(localHighestScores)); // sting and store to session memory
-    console.log(localHighestScores[4]);
-    console.log(JSON.stringify(localHighestScores));
     window.open("score.html","_self"); // open best scores window
 }

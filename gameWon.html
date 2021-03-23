@@ -9,16 +9,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    -->
     <title>Game won</title>
 </head>
-<body class="hero-image">
-    <div id="gameOverDiv"> <!-- to be changed-->
-        <h2 class="gameOverItem">Game Won</h2> <!-- to be changed-->
-        <p class="gameOverItem" id="gameWonID">Test</p> <!-- to be changed -->
-        <p class="gameOverItem" id="gameWonScore">Score<br> Hard level only</p>
+<!-- main window-->
+<body class="hero-image-game">
+    <div id="game-end-div">
+        <h2 class="game-end-item">Game Won</h2>
+        <p class="game-end-item" id="gameWonID"></p>
+        <!-- score section without top score -->
+        <p class="game-end-item" id="gameWonScore">Score is displayed for hard level only</p>
         <div id="index-page">
             <div>
                 <button type="button" class="btn btn-primary" onclick="window.location.href='newGame.html';">New game</button>
@@ -28,10 +27,10 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="saveScoreModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true"> <!-- removed role="dialog" -->
+    <!-- modal for top score -->
+    <div class="modal fade" id="saveScoreModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content"> <!-- add class mainMenu-->
+            <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title m-auto">Congratulations!</h3>
                 </div>
@@ -40,9 +39,12 @@
                         <div class="row">
                             <h5 class="m-auto pb-4">Excellent score</h5>
                         </div>
-                        <div class="gameOverItem m-auto text-center pb-2" id="gameWonIDCongrat"></div> <!-- to be changed -->
-                        <div class="gameOverItem m-auto text-center pb-2" id="gameWonScoreCongrat"></div>
+                        <!-- write results -->
+                        <div class="game-end-item m-auto text-center pb-2" id="gameWonIDCongrat"></div>
+                        <div class="game-end-item m-auto text-center pb-2" id="gameWonScoreCongrat"></div>
+                        <!-- save player name -->
                         <div class="input-group" id="saveScoreSection">
+                            <!-- https://stackoverflow.com/questions/9841363/how-to-restrict-number-of-characters-that-can-be-entered-in-html5-number-input-f -->
                             <input type="text" name="playername" id="playername" onkeypress="limitKeypress(event,this.value,12)" placeholder="your name"/>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-success" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>Save</button>
@@ -71,5 +73,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-    <script src="./assets/js/gamewon.js"></script> <!-- to be changed -->
+    <script src="./assets/js/gamewon.js"></script>
 </body>

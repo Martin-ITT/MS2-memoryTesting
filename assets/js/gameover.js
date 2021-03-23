@@ -1,6 +1,3 @@
-console.log('gameover.js here! sessionStorage: ');
-console.log(sessionStorage);
-
 // Game won / Game over window
 // game over time out
 if (sessionStorage.getItem("reasonGameOver") === "flips") {   

@@ -9,6 +9,7 @@ body {
   display: flex; /* with .memory-game margin:auto center the game container */
   background: rgb(221, 176, 50);
 }
+/* lamborghini  window */
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/www.pexels.com--photo--photo-of-car-on-expressway-3422964.jpg");
   min-height: 84vh;
@@ -17,6 +18,7 @@ body {
   background-size: cover;
   position: relative;
 }
+/* five cars window*/
 .hero-image-game{
   margin:0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/www.pexels.com--photo--photo-of-five-cars-parked-1280560.jpg");
@@ -201,13 +203,13 @@ img {
   display: inline-block;
   width: 33%;
 }
-#gameOverDiv {
+#game-end-div {
   text-align: center;
   width: 100%;
   display: block;
   margin: auto;
 }
-.gameOverItem {
+.game-end-item {
   align-self: center;
 }
 /* game won modal*/
