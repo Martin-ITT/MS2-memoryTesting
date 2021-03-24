@@ -1,4 +1,4 @@
-![The Car Club](memoryTesting/readme.md/assets/img/ami-responsive.jpg "am I responsive")
+![The Car Club](memoryTesting/assets/img/ami-responsive.jpg "am I responsive")
 
 # The Car Club
 
