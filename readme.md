@@ -1,4 +1,4 @@
-![The Car Club](/assets/img/ami-responsive.jpg "am I responsive")
+![The Car Club](../assets/img/ami-responsive.jpg "am I responsive")
 
 # The Car Club
 
