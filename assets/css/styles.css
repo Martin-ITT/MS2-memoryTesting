@@ -49,7 +49,7 @@ img {
   width: 95%;
   height: 80%;
   /* with body display:flex center the game container */
-  display: flex; /* changes items behaviour with default properties:
+  display: flex; /* changes items behaviour with default properties: */
   flex-wrap: wrap; /* items can be displayed in multiple rows*/
   perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
 }
