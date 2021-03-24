@@ -5,7 +5,6 @@ body, html {
 }
 /* navbar*/
 nav { 
-    
     background-color: #885445;
 }
 nav img {
@@ -138,11 +137,14 @@ footer p {
 
 /* RESPONSIVE DESIGN*/
 @media(min-width: 420px) {
+    nav{
+        height:7%;
+    }
         footer {
         height: 7vh;
         }
         .hero-image {
-        min-height: 87vh;
+        min-height: 86vh;
         }
       .hero-text {
         width: 300px;
@@ -165,7 +167,6 @@ footer p {
         #contact-form h2 {
             font-size: 1.3em;
         }
-        
         #contact-form label,
         #contact-form #emailHelp {
             font-size: .8em;

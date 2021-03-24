@@ -12,7 +12,6 @@ const timeIdSelector = document.getElementById('timeID');
 let timerOn = false; // timer not running
 let maxFlipsForHard = 20; // change max num of flips for hard game
 let maxTimeForHard = 1; // change max time for hard game
-//const cards = document.querySelectorAll('.memory-card'); has to be inside timeout function
 
 /*
 variables in session storage:
@@ -27,14 +26,18 @@ sessionHighestScores - highest scores
 $('document').ready(function () {
     // grab the query parameter from the url and pass it in to create a game - https://github.com/David-A-Ray/MS2-Whats-your-poison-memory-game/blob/master/
     mode = new URLSearchParams(window.location.search).get('mode');
+    
     if (mode === "highScores") { // check if highscores has been selected first
         displayHighScores(highScores);
-    } else if (mode === "Easy") {
+    }
+    
+    else if (mode === "Easy") {
         //create 6 pairs game
         boardSize = 6;
         boardSizeClass = "easy";
         sessionStorage.setItem("gameHard", "no");
     }
+    
     else if (mode === "Medium") {
         //create 8 pairs game
         boardSize = 8;
@@ -42,6 +45,7 @@ $('document').ready(function () {
         startTime = 1;
         sessionStorage.setItem("gameHard", "no");
     }
+    
     else if (mode === "Hard") {
         //create 10 pairs game
         boardSize = 10;
@@ -49,41 +53,50 @@ $('document').ready(function () {
         startTime = maxTimeForHard;
         sessionStorage.setItem("gameHard", "yes");
     }
+    
     // get random logos 
     cardURL = getRandomImages(cardURL);
     // create game 
     createGame();
 });
+
 /* get data from JSON */
 function getData(cb) {
+    
     var xhr = new XMLHttpRequest(cb);
     xhr.open("GET", "./assets/cars.json", true);
     xhr.send();
+    
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cb(JSON.parse(this.responseText));   
         }
     }
   };
+
   /* fill cardURL array from  */
   /* https://stackoverflow.com/questions/5836833/create-an-array-with-random-values */
   for (cardURL=[],i=0;i<330;++i) cardURL[i]=i; /* cardURL array to store logo URL's - loop throuhg 330 links */
+  
   /* shuffle logos array */
   function getRandomImages(array) {
     var tmp, current, top = array.length;
+    
     if(top) while(--top) {
-      current = Math.floor(Math.random() * (top + 1));
-      tmp = array[current];
-      array[current] = array[top];
-      array[top] = tmp;
+        current = Math.floor(Math.random() * (top + 1));
+        tmp = array[current];
+        array[current] = array[top];
+        array[top] = tmp;
     }
     return array;
   }
+
   /* function creating game - document writer */
   function createGame() {
     sessionStorage.setItem("flipCounter", 0); //clear session storage
     sessionStorage.setItem("timeCounter", "no time limit");
     sessionStorage.setItem("reasonGameOver", "user");
+    
     //call data function to retreive urls and create divs - cards
     getData(function(data) {
       
@@ -108,38 +121,47 @@ function getData(cb) {
             content.appendChild(firstDiv).innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./assets/img/www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
             content.appendChild(secondDiv).innerHTML += '<img class="front-face" src="'+data[x].url+'" alt="Car logo'+i+'"><img class="back-face" src="./assets/img/www.pexels.com--photo--yellow-nissan-classic-car-beside-gray-beige-concrete-building-69020.jpg"  alt="JS Badge" />';
         }
+
     // add class to identify game size for css
     const changeDiv = document.getElementById('game-board');
     changeDiv.classList.add(boardSizeClass);
     });
 }
+
 // card click event listener
 // timeout to fix readyState problem - wouldn't flip card
 setTimeout(function() {
-const cards = document.querySelectorAll('.memory-card');
-cards.forEach(card => card.addEventListener('click', flipCard));
+    const cards = document.querySelectorAll('.memory-card');
+    cards.forEach(card => card.addEventListener('click', flipCard));
 },500);
+
 // shuffle cards on board
 setTimeout(() => { 
 // IIFE imediately invoked function
     (function shuffleCards() {
         let cards = document.querySelectorAll('.memory-card');
+        
         cards.forEach(card => {
             let randomPos = Math.floor(Math.random() * 100); // returns random number between 0-1 and, multiply to get num 0-100, floor makes it integer 
             card.style.order =randomPos;
         });
     })();
  },1000);
+
 //flip card on click function
 function flipCard() {
     if (boardSize >= 8  && !timerOn) startTimer(); // activate timer for med and hard
+    
     if (numberOfFlips === maxFlipsForHard && boardSize === 10) { //game lost if more than 20 flips
         sessionStorage.setItem("reasonGameOver", "flips"); //pass game lost over flips
         gameLost(); // call gameLost function
     }
     timerOn = true; //prevent restarting timer
+    
     if (lockBoard) return; // rest of the code won't be executed if lockboard true. return = exit function
+    
     if (this === firstCard) return; // prevent double click on first card
+    
     this.classList.toggle('flip'); // toggle flip class on selected card
     // first card has been clicked - hasFlippedCard is false
     if(!hasFlippedCard) {
@@ -157,6 +179,7 @@ function flipCard() {
     } 
       return; //exit current function
 }
+
 // compare flipped cards
 function checkForMatch() {
     //do cards match?
@@ -164,6 +187,7 @@ function checkForMatch() {
         let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
         isMatch ? disableCards() : unflipCards(); // if cards match call disable cards otherwise flip them back
 }
+
 // cards match remove click event listeners 
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
@@ -174,6 +198,7 @@ function disableCards() {
     //check if game won
     checkGameWon ();
 }
+
 // no match flip cards back
 function unflipCards() {
     lockBoard = true; // only two cards can be flipped at a same time
@@ -184,16 +209,19 @@ function unflipCards() {
         resetBoard(); // call function to clear/restore variables
     },1500); //cards will flip back in 1.5 sec  
 }
+
 // restore variables as before clicking cards again
 function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 }
+
 //check if all cards are flipped
 function checkGameWon(){
     let gameWon = matchedPairs === boardSize;
     gameWon ? gameComplete() :resetBoard();
 }
+
 // game was won
 function gameComplete() {
     sessionStorage.setItem("reasonGameOver", "won");
@@ -201,21 +229,25 @@ function gameComplete() {
     window.open("gameWon.html","_self");
     },1000);// 1 sec delay after game won
 }
+
 // timer 
 function startTimer() {
     // timer https://www.youtube.com/watch?v=x7WJEmxNlEs
     // https://stackoverflow.com/questions/5978519/how-to-use-setinterval-and-clearinterval
     var interval = setInterval(updateTimer, 1000); //run time every second and stop on out of time
     time = startTime * 60; // change to seconds
+    
     function updateTimer() {
         const minutes = Math.floor(time/60);
         let seconds = time % 60;
         seconds = seconds < 10 ? '0' + seconds : seconds; //format time - if less than ten seconds add leading zero otherwise display normal
         timeIdSelector.innerHTML = `TIME: 0${minutes}:${seconds}`;
+        
         if (time != 0) { // stops timer
             time --;
             sessionStorage.setItem("timeCounter", time); // store time left in session storage
         }
+        
         if (time == 0 ) { // end game
             clearInterval(interval);
             sessionStorage.setItem("reasonGameOver", "time"); // game lost over time

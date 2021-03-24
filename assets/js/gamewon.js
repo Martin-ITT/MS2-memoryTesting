@@ -6,6 +6,7 @@ const saveScoreBtn = document.getElementById("saveScoreBtn"); // save btn
 
 //document writer - update time & score. display high score section on condition
 $('#gameWonID').html('Well done!<br>' +'Number of flips: ' +sessionStorage.getItem("flipCounter") +'<br> Time left: ' +sessionStorage.getItem("timeCounter")); // update flips & time
+
 if (sessionStorage.getItem("gameHard") === "yes") { // count score for hard level
     currentScore = ((20 - (JSON.parse(sessionStorage.getItem("flipCounter")))) *20) + JSON.parse(sessionStorage.getItem("timeCounter")); // count score = flips left * 20 + time left
     $('#gameWonScore').html('Score:' +currentScore); //display score
@@ -16,6 +17,7 @@ if (sessionStorage.getItem("gameHard") === "yes") { // count score for hard leve
     $('#gameWonScoreCongrat').html('Score:' +currentScore);
     }
 }
+
 // name length input restriciton
 // https://stackoverflow.com/questions/9841363/how-to-restrict-number-of-characters-that-can-be-entered-in-html5-number-input-f
 function limitKeypress(event, value, maxLength) {
