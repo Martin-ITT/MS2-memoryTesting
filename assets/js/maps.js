@@ -54,10 +54,3 @@ function initMap() {
         });
     }
 }
-function showOffice() {
-    options = {
-        zoom: 18,
-        center: { lat: 53.34003492552744, lng: -6.259437301645186 }
-    }
-    initMap();
-}
