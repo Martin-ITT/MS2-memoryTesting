@@ -1,4 +1,4 @@
-![The Car Club](./assets/img/ami-responsive.jpg "am I responsive")
+![The Car Club](/assets/img/ami-responsive.jpg "am I responsive")
 
 # The Car Club
 
@@ -16,8 +16,6 @@
 1. <a href="#testing">Testing 🔧</a>
 1. <a href="#deployment">Deployment 💥</a>
 1. <a href="#credits">Credits 👋</a>
-
-[project repository here](https://github.com/Martin-ITT/memoryTesting)
 
 [live website here](https://martin-itt.github.io/memoryTesting/index.html)
 
@@ -83,8 +81,8 @@ Navigation between web content and the game will be caried over index.html.
 ## 1.4 Skeleton 
 
 Wireframes were created using Figma
-![The Car Club](./assets/img/figma1.jpg "Figma wireframes")
-![The Car Club](./assets/img/figma2.jpg "Figma wireframes")
+![The Car Club](/assets/img/figma1.jpg "Figma wireframes")
+![The Car Club](/assets/img/figma2.jpg "Figma wireframes")
 
 The priorities for this project was to create a memory game written in JavaScript and JQuery library and to connect Google Maps and EmailJS API's. 
 Navigation within web pages are caried over intuintive and responsive navbar. It contains Car club logo and two links for each page. A hero picture of a sport car creates the body. A footer consists of a clickable icon to my Github repository and a copyright text. Address, a Google Map window and contact form sending emails over API are inside body of contact page. Game launcher is implemented with BS4 modals in the body of the index page. After clicking Play button on index page a first modal menu will open offering a New game option, Best scores and Game rules. On selection of the New game option a new modal menu will open to select difficulty level. This will navigate to a game screen.
@@ -93,7 +91,7 @@ Game screen has no navbar neither the footer. There is a score bar on the side w
 ## 1.5
 
 The designed started selecting suitable hero image. I decided to choose a Lamborgini car on a motorway bridge. 
-The color scheme was selected using Online Adobe Colors - https://color.adobe.com/create/image-gradient and extracting the color palette from our hero image.
+The color scheme was selected using Online Adobe Colors - and extracting the color palette from our hero image.
 
 There is an animation of rotating squares to support the loading page effect. I found basic system fonts sufficient for this project and with the focus on loading efficiency I did not use any external fonts.
 
