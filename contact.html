@@ -7,7 +7,9 @@
     <meta name="author" content="Martin Pavlin">
     <meta name="keywords" content="carlogos, memory game, game">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">        
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>The Car club</title>
 </head>
@@ -28,27 +30,28 @@
             </ul>
         </div>
     </nav>
-
+    <!-- main window -->
     <div class="hero-image">
         <section class="pb-3" id="contact">
             <div id="contact-address">
                 <div class="container">
                     <div class="row">
+                        <!-- address -->
                         <div class="col-md-4 text-center text-md-right">
                             <h4>address</h4>
-                            <h6>The Car Club<br>1 St Stephen's Green, Dublin 2, D02 FY84</h6>
+                            <h6>The Car Club<br>1 St Stephen's Green, Dublin 2, D02 EP29</h6>
                             <h4>telephone</h4>
                             <h6>(+353) 01- 454 4544</h6>
                             <h4>email</h4>
                             <h6>info@thecarclub.ie</h6>
                         </div>
-                        <div id="contact-map" class="col-md-8 text-center">
-                            
-                        </div>
+                        <!-- map -->
+                        <div id="contact-map" class="col-md-8 text-center"></div>
                     </div>
                 </div>
             </div>
             <hr>
+            <!-- form -->
             <div id="contact-form">
                 <div class="container">
                     <form name="contact-form" onsubmit="formSubmitAlert()" method="post" action="https://formdump.codeinstitute.net/">
@@ -80,7 +83,7 @@
             </div>
         </section>   
     </div>
-      <!-- FOOTER from -->
+      <!-- FOOTER -->
       <footer>
         <div class="page-footer text-center">
             <div class="container">
