@@ -6,10 +6,10 @@ var options = { //center position to initialize maps
 var prev_infowindow =false; // var to identify opened infowindow 
 
 const locations = [ //markers data
-    {loc: {lat: 53.34003492552744, lng: -6.259437301645186 }, cont:'<h6>Location of our office</h6><br><p>call in anytime</p>'}, //office
-    {loc: {lat: 53.33934048335442, lng: -6.262514241748317 }, cont:`<h6>Q-park Stephen's Green</h6><br><p>Here is our convenient car park</p>`}, //car park
-    {loc: {lat: 53.340056909822714, lng: -6.258445392166223 }, cont:'<h6>The Greenhouse</h6><br><p>Our venue place</p>'}, //restaurant
-    {loc: {lat: 53.338843836008515, lng: -6.252721223079907 }, cont: '<h6>The Merrion Hotel</h6><br><p>Accomodation for our members</p>'} //hotel
+    {loc: {lat: 53.34003492552744, lng: -6.259437301645186 }, cont:'<p>Location of our office</p><br><small>call in anytime</small>'}, //office
+    {loc: {lat: 53.33934048335442, lng: -6.262514241748317 }, cont:`<p>Q-park Stephen's Green</p><br><small>Here is our convenient car park</small>`}, //car park
+    {loc: {lat: 53.340056909822714, lng: -6.258445392166223 }, cont:'<p>The Greenhouse</p><br><small>Our venue place</small>'}, //restaurant
+    {loc: {lat: 53.338843836008515, lng: -6.252721223079907 }, cont: '<p>The Merrion Hotel</p><br><small>Accomodation for our members</small>'} //hotel
   ];
 
 //https://developers.google.com/maps/documentation/javascript/adding-a-google-map
@@ -45,7 +45,7 @@ function initMap() {
             prev_infowindow.close();
             }
             prev_infowindow = infowindow;
-            infowindow.open(base.map, marker);
+            //infowindow.open(base.map, marker);
         });
         // Add a marker clusterer to manage the markers.
         new MarkerClusterer(map, markers, {

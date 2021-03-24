@@ -5,6 +5,7 @@ body, html {
 }
 /* navbar*/
 nav { 
+    
     background-color: #885445;
 }
 nav img {
@@ -39,7 +40,7 @@ footer p {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/www.pexels.com--photo--photo-of-car-on-expressway-3422964.jpg");
  /* Set a specific height */
-  min-height: 84vh;
+  min-height: 82vh;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
@@ -64,7 +65,8 @@ footer p {
 /*modal windows color*/
 .modal-content {
     background-color: #000000;
-    color: #ffffff; 
+    color: #ffffff;
+    font-size: small;
 }
 /* modal butons */
 .my-btn {
@@ -86,13 +88,14 @@ footer p {
 /* map section */
 #contact-map {
     width: 95%;
+    margin: auto;
     color: #000000;
-    height: 200px;
+    height: 300px;
     border-radius: 5px;
 }
 /* form section */
 #contact-form {
-    width: 90%;
+    width: 95%;
     padding-top: 10px;
     margin: auto;
     border-radius: 5px;
@@ -154,11 +157,11 @@ footer p {
             font-size: .9em;
         }
         #contact-map {
-            height: 300px;
+            min-height: 350px;
         }
         #contact-form {
-            width: 80%;
-        } 
+            min-height: 350px;
+        }
         #contact-form h2 {
             font-size: 1.3em;
         }
