@@ -50,15 +50,6 @@ img {
   height: 80%;
   /* with body display:flex center the game container */
   display: flex; /* changes items behaviour with default properties:
-  flex-item {
-    flex: 1; - each item takes same space
-  }
-  flex-container {
-  flex-direction: row; items layed in row
-  flex-wrap: nowrap; - layed out in one row only
-  justify-content: flex-start; - positioned left to right
-  align-items: stretch; - stretched acros container height
-  }*/
   flex-wrap: wrap; /* items can be displayed in multiple rows*/
   perspective: 1000px; /* gives depth property - 3D effect - together with transform-style & transition property in .memory-card*/
 }
