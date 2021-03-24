@@ -54,27 +54,29 @@
             <!-- form -->
             <div id="contact-form">
                 <div class="container">
+                    <!--
                     <form name="contact-form" onsubmit="formSubmitAlert()" method="post" action="https://formdump.codeinstitute.net/">
+                    --><form id="form">
                         <div class="container text-center text-white">
                             <h2>Contact us</h2>
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="Please enter your name here" required>
+                            <input type="text" class="form-control" name="from_name" id="from_name" placeholder="Please enter your name here" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="Please enter your email here" required>
+                            <input type="email" class="form-control" name="reply_to" id="reply_to" placeholder="Please enter your email here" required>
                             <small id="emailHelp" class="form-text">We'll never share your email address.</small>
                         </div>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea class="form-control" name="message" placeholder="You can type your message here" required></textarea>
+                            <textarea class="form-control" name="message" id="message" placeholder="You can type your message here" required></textarea>
                         </div>
                         <div class="container">
                             <div class="row">
                                 <div class="col text-center mb-3">
-                                    <button type="submit" class="btn btn-light border border-dark">Submit</button>
+                                    <button type="submit" value ="Send Email" id="button" class="btn btn-light border border-dark">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -105,5 +107,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./assets/js/maps.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">emailjs.init('user_CTa32Ht4JCxuTkdxcZYDc')</script>
+    <script>
+        const btn = document.getElementById('button');
+        document.getElementById('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            btn.value = 'Sending...';
+            const serviceID = 'default_service';
+            const templateID = 'template_n4kf7w9';
+            emailjs.sendForm(serviceID, templateID, this).then(() => {
+                btn.value = 'Send Email';
+                alert('Sent!');
+                window.open("contact.html","_self");
+            },
+            (err) => {
+                btn.value = 'Send Email';
+                alert(JSON.stringify(err));
+            });
+        });
+    </script>
 </body>
 </html>
