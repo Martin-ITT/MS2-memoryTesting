@@ -1,4 +1,4 @@
-![The Car Club](memoryTesting/assets/img/ami-responsive.jpg "am I responsive")
+![The Car Club](https://github.com/Martin-ITT/memoryTesting/blob/main/assets/img/ami-responsive.JPG "am I responsive")
 
 # The Car Club
 
@@ -81,8 +81,8 @@ Navigation between web content and the game will be caried over index.html.
 ## 1.4 Skeleton 
 
 Wireframes were created using Figma
-![The Car Club](./assets/img/figma1.jpg "Figma wireframes")
-![The Car Club](assets/img/figma2.jpg "Figma wireframes")
+![The Car Club](https://github.com/Martin-ITT/memoryTesting/blob/main/assets/img/figma1.JPG "Figma wireframes")
+![The Car Club](https://github.com/Martin-ITT/memoryTesting/blob/main/assets/img/figma2.JPG "Figma wireframes")
 
 The priorities for this project was to create a memory game written in JavaScript and JQuery library and to connect Google Maps and EmailJS API's. 
 Navigation within web pages are caried over intuintive and responsive navbar. It contains Car club logo and two links for each page. A hero picture of a sport car creates the body. A footer consists of a clickable icon to my Github repository and a copyright text. Address, a Google Map window and contact form sending emails over API are inside body of contact page. Game launcher is implemented with BS4 modals in the body of the index page. After clicking Play button on index page a first modal menu will open offering a New game option, Best scores and Game rules. On selection of the New game option a new modal menu will open to select difficulty level. This will navigate to a game screen.
