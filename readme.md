@@ -88,9 +88,9 @@ The priorities for this project was to create a memory game written in JavaScrip
 Navigation within web pages are caried over intuintive and responsive navbar. It contains Car club logo and two links for each page. A hero picture of a sport car creates the body. A footer consists of a clickable icon to my Github repository and a copyright text. Address, a Google Map window and contact form sending emails over API are inside body of contact page. Game launcher is implemented with BS4 modals in the body of the index page. After clicking Play button on index page a first modal menu will open offering a New game option, Best scores and Game rules. On selection of the New game option a new modal menu will open to select difficulty level. This will navigate to a game screen.
 Game screen has no navbar neither the footer. There is a score bar on the side with Time, Score and a Quit button. (Score bar was later moved to the top of the screen). There are three different game boards each written by JavaScript. Player can either Win the game, loose it or interrupt with a quit button. Game results will be displayed and player can either play a new game or return to main menu. The hardest level counts the score. If the player wins the game beating top five players the score can be saved in the best players window. This is accessible after well played game or from main page.
 
-## 1.5
+## 1.5 Surface
 
-The designed started selecting suitable hero image. I decided to choose a Lamborgini car on a motorway bridge. 
+The design started selecting suitable hero image. I decided to choose a Lamborgini car on a motorway bridge. 
 The color scheme was selected using Online Adobe Colors - and extracting the color palette from our hero image.
 
 There is an animation of rotating squares to support the loading page effect. I found basic system fonts sufficient for this project and with the focus on loading efficiency I did not use any external fonts.
