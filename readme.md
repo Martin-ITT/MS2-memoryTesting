@@ -17,7 +17,7 @@
 1. <a href="#deployment">Deployment 💥</a>
 1. <a href="#credits">Credits 👋</a>
 
-[live website here](https://martin-itt.github.io/memoryTesting/index.html)
+[live website here](https://martin-itt.github.io/MS2-memoryTesting/)
 
 <span id="project"></span>
 
